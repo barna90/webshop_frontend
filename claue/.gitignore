@@ -1,0 +1,5 @@
+.idea
+ .DS_STORE
+ /node_modules
+ /_app/html
+ /_app/css

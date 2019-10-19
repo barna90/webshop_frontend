@@ -1,0 +1,52 @@
+.ps-breadcrumb {
+    margin-bottom: 40px;
+    padding: 1.5rem 0;
+    background: #f6f6f8;
+
+    .breadcrumb {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        li {
+            display: inline-block;
+            font-size: 1.3rem;
+            line-height: 20px;
+            color: $color-text;
+            &:before {
+                content: "\f105";
+                font-family: FontAwesome;
+                margin: 0 5px;
+            }
+            &:first-child {
+                padding-left: 0;
+                &:before {
+                    display: none;
+                }
+            }
+        }
+        a {
+            font-size: 16px;
+            font-size: 1.3rem;
+            line-height: 20px;
+            color: $color-heading;
+            &:hover {
+                color: $color-1st;
+            }
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+    @include media("<md") {
+        position: relative;
+        .breadcrumb {
+            li {
+                font-size: 12px;
+            }
+            a {
+                font-size: 12px;
+            }
+        }
+    }
+}
