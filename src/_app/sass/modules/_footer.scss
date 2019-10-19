@@ -1,0 +1,117 @@
+.ps-footer {
+    &__content {
+        padding-top: 8rem;
+        padding-bottom: 5rem;
+        background-color: #F6F6F8;
+    }
+
+    &__copyright {
+        @extend %list-reset;
+        padding: 1.5rem 0;
+        background-color: #fff;
+        p {
+            margin-bottom: 0;
+            a {
+                color: $color-1st;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .ps-footer__nav {
+            float: right;
+        }
+    }
+
+    .ps-site-info {
+        padding-right: 2rem;
+        .ps-logo {
+            display: inline-block;
+            margin-bottom: 3rem;
+            img {
+                max-height: 27px;
+            }
+        }
+        h3 {
+            display: block;
+            margin-bottom: 2.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #222222;
+            text-transform: uppercase;
+        }
+
+        figure {
+            p {
+                position: relative;
+                margin-bottom: 2rem;
+                padding-left: 3rem;
+                line-height: 1.6em;
+                i {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin-right: 10px;
+                    color: $color-text;
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .ps-footer__nav {
+        li {
+            display: inline-block;
+            margin-right: 10px;
+
+            a {
+                color: $color-text;
+
+                &:hover {
+                    color: $color-1st;
+                }
+            }
+        }
+    }
+
+    @include media("<lg") {
+        .ps-footer__payment {
+            padding-top: 2rem;
+            text-align: left;
+        }
+        .ps-site-info {
+            margin-bottom: 30px;
+        }
+        .ps-form--subscribe-footer {
+            max-width: 450px;
+        }
+    }
+    @include media("<md") {
+        &__content {
+            padding-top: 5rem;
+            padding-bottom: 2rem;
+        }
+        &__copyright {
+            text-align: center;
+            p {
+                margin-bottom: 10px;
+            }
+            .ps-footer__nav {
+                float: none;
+            }
+        }
+
+    }
+    @include media("<sm") {
+        &__copyright {
+            text-align: center;
+        }
+        .ps-site-info {
+            margin-bottom: 3rem;
+        }
+        .ps-footer__payment {
+            text-align: center;
+        }
+    }
+}
