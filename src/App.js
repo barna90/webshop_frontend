@@ -16,6 +16,8 @@ import Contact from "./containers/Contact/Contact";
 import FAQ from "./containers/FAQ/FAQ";
 import ShoppingCart from "./containers/ShoppingCart/ShoppingCart";
 import Checkout from "./containers/Checkout/Checkout";
+import MyAccount from "./containers/MyAccount/MyAccount";
+import OrdersTracking from "./containers/OrdersTracking/OrdersTracking";
 
 class App extends Component {
   state = {};
@@ -46,6 +48,12 @@ class App extends Component {
             </Route>
             <Route path="/rendeles">
               <Checkout />
+            </Route>
+            <Route path="/bejelentkezes">
+              <MyAccount />
+            </Route>
+            <Route path="/nyomkovetes">
+              <OrdersTracking />
             </Route>
             <Route path="/">
               <Home />

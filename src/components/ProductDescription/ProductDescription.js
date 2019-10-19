@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SizeGuide from "../SizeGuide/SizeGuide";
 
 class ProductDescription extends Component {
   state = {};
@@ -74,7 +75,9 @@ class ProductDescription extends Component {
             <div className="ps-tabs">
               <div className="ps-tab active" role="tabpanel" id="tab-1">
                 <p>Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Abercrombie & Fitch. Perfect for pairing with denim and white kicks for a stylish sporty vibe. Will fit a UK 8-10, model shown is a UK 8 and 5’5. !!</p>
-                <p>Typography is the work of typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p><img src={require("../../assets/img/product-detail/watch.jpg")} alt="" />
+                <p>Typography is the work of typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.</p>
+                <SizeGuide />
+                <img src={require("../../assets/img/product-detail/watch.jpg")} alt="" />
               </div>
               <div className="ps-tab" id="tab-2">
                 <div className="table-responsive">
