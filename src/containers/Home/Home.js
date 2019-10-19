@@ -50,7 +50,7 @@ class Home extends Component {
           </ul>
           <div
             className="ps-hero bg--cover"
-            data-background="img/hero/shop.jpg"
+            data-background={require("../../assets/img/hero/shop.jpg")}
           >
             <div className="container">
               <h1>Shop All Products</h1>
@@ -87,7 +87,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-1-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-1-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-1-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-1-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -104,7 +104,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-2-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-2-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-2-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-2-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -121,7 +121,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-3-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-3-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-3-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-3-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -138,7 +138,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-4-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-4-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-4-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-4-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -155,7 +155,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge"><i> - 14.3%</i></span><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-5-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-5-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge"><i> - 14.3%</i></span><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-5-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-5-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -168,15 +168,15 @@ class Home extends Component {
                             <div className="ps-product__color">
                               <div className="ps-radio ps-radio--color ps-radio--inline color-1">
                                 <input className="form-control" type="radio" id="color-445" name="color-4"/>
-                                <label for="color-445"></label>
+                                <label htmlFor="color-445"></label>
                               </div>
                               <div className="ps-radio ps-radio--color ps-radio--inline color-2">
                                 <input className="form-control" type="radio" id="color-432" name="color-4"/>
-                                <label for="color-432"></label>
+                                <label htmlFor="color-432"></label>
                               </div>
                               <div className="ps-radio ps-radio--color ps-radio--inline color-3">
                                 <input className="form-control" type="radio" id="color-488" name="color-4"/>
-                                <label for="color-488"></label>
+                                <label htmlFor="color-488"></label>
                               </div>
                             </div>
                           </div>
@@ -186,7 +186,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge disabled"><i>Sold Out</i></span><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-6-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-6-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge disabled"><i>Sold Out</i></span><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-6-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-6-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -199,11 +199,11 @@ class Home extends Component {
                             <div className="ps-product__color">
                               <div className="ps-radio ps-radio--color ps-radio--inline color-1">
                                 <input className="form-control" type="radio" id="color-558" name="color-5"/>
-                                <label for="color-558"></label>
+                                <label htmlFor="color-558"></label>
                               </div>
                               <div className="ps-radio ps-radio--color ps-radio--inline color-2">
                                 <input className="form-control" type="radio" id="color-59" name="color-5"/>
-                                <label for="color-59"></label>
+                                <label htmlFor="color-59"></label>
                               </div>
                             </div>
                           </div>
@@ -213,7 +213,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-7-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-7-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-7-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-7-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -230,7 +230,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-8-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-8-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-8-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-8-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -247,7 +247,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/trend-1-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/trend-1-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/trend-1-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/trend-1-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -264,7 +264,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge"><i> - 14.3%</i></span><a className="ps-product__img" href="product-standard.html"><img src="img/product/trend-5-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/trend-5-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge"><i> - 14.3%</i></span><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/trend-5-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/trend-5-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -281,7 +281,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-6-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-6-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-6-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-6-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>
@@ -294,15 +294,15 @@ class Home extends Component {
                             <div className="ps-product__color">
                               <div className="ps-radio ps-radio--color ps-radio--inline color-1">
                                 <input className="form-control" type="radio" id="color-1076" name="color-10"/>
-                                <label for="color-1076"></label>
+                                <label htmlFor="color-1076"></label>
                               </div>
                               <div className="ps-radio ps-radio--color ps-radio--inline color-2">
                                 <input className="form-control" type="radio" id="color-1021" name="color-10"/>
-                                <label for="color-1021"></label>
+                                <label htmlFor="color-1021"></label>
                               </div>
                               <div className="ps-radio ps-radio--color ps-radio--inline color-3">
                                 <input className="form-control" type="radio" id="color-1020" name="color-10"/>
-                                <label for="color-1020"></label>
+                                <label htmlFor="color-1020"></label>
                               </div>
                             </div>
                           </div>
@@ -312,7 +312,7 @@ class Home extends Component {
                     <div className="grid-item">
                       <div className="grid-item__content-wrapper">
                         <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src="img/product/best-7-1.jpg" alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src="img/product/best-7-2.jpg" alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
+                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-7-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-7-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
                             <ul className="ps-product__actions">
                               <li><a href="product-standard.html">Quick Shop</a></li>
                               <li><a href="product-standard.html">Add to cart</a></li>

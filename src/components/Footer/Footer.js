@@ -13,12 +13,12 @@ class Footer extends Component {
                 <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12">
                   <div className="ps-site-info">
                     <a className="ps-logo" href="#">
-                      <img src="img/logo.png" alt="" />
+                      <img src={require("../../assets/img/logo.png")} alt="" />
                     </a>
                     <figure>
                       <p>
                         <i className="pe-7s-map-marker"></i> 184 Main Rd E, St
-                        Albans <br> VIC 3021, Australia</br>
+                        Albans <br /> VIC 3021, Australia
                       </p>
                       <p>
                         <i className="pe-7s-mail"></i>
@@ -138,6 +138,32 @@ class Footer extends Component {
                       </div>
                     </div>
                   </div>
+                </div>
+                <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                  <form className="ps-form--subscribe-footer" action="do_action" method="post">
+                    <p>Subscribe to our newsletter and get 10% off your first purchase</p>
+                    <div className="form-group">
+                      <input className="form-control" type="text" placeholder="Your EmaiL Address" />
+                      <button>Subscribe</button>
+                    </div><img src={require("../../assets/img/payment2.png")} alt="" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="ps-footer__copyright">
+            <div className="container">
+              <div className="row">
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                  <p>Copyright © 2016 <a href="#">Claue</a> all rights reserved. Powered by <a href="#">JanStudio</a></p>
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+                  <ul className="ps-footer__nav">
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="about-us.html">Contact</a></li>
+                    <li><a href="about-us.html">Blog</a></li>
+                  </ul>
                 </div>
               </div>
             </div>

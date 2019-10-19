@@ -12,6 +12,9 @@ class Header extends Component {
   state = {};
 
   render() {
+    const headerCenterText = "10.000 Ft felett ingyenes szállítás!";
+    const email = "info@melegito.hu";
+
     return (
       <>
         <header className="header header--1" data-sticky="true">
@@ -23,18 +26,19 @@ class Header extends Component {
                 </span>
                 <span>
                   <i className="pe-7s-mail"></i>
-                  <a href="mailto@gmail.com"> claue@domain.com</a>
+                  <a href="mailto@gmail.com"> {email}</a>
                 </span>
               </p>
             </div>
             <div className="header__center">
               <p>
-                Summer sale discount off <span>50%!</span>
-                <a href="shop-4-column.html"> Shop Now</a>
+                {/* Summer sale discount off <span>50%!</span>
+                <a href="shop-4-column.html"> Shop Now</a> */}
+                {headerCenterText}
               </p>
             </div>
             <div className="header__right">
-              <div className="ps-dropdown">
+              {/* <div className="ps-dropdown">
                 <a href="#">USD</a>
                 <ul className="ps-dropdown-menu">
                   <li>
@@ -47,13 +51,13 @@ class Header extends Component {
                     <a href="#">AUD</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="navigation">
             <div className="navigation__left">
               <a className="ps-logo" href="index.html">
-                <img src="img/logo.png" alt="" />
+                <img src={require("../../assets/img/logo.png")} alt="" />
               </a>
             </div>
             <div className="navigation__center">
@@ -346,18 +350,19 @@ class Header extends Component {
                 </span>
                 <span>
                   <i className="pe-7s-mail"></i>
-                  <a href="mailto@gmail.com"> claue@domain.com</a>
+                  <a href="mailto@gmail.com"> {email}</a>
                 </span>
               </p>
             </div>
             <div className="header__center">
               <p>
-                Summer sale discount off <span>50%!</span>
-                <a href="shop-4-column.html"> Shop Now</a>
+                {/* Summer sale discount off <span>50%!</span>
+                <a href="shop-4-column.html"> Shop Now</a> */}
+                {headerCenterText}
               </p>
             </div>
             <div className="header__right">
-              <div className="ps-dropdown">
+              {/* <div className="ps-dropdown">
                 <a href="#">USD</a>
                 <ul className="ps-dropdown-menu">
                   <li>
@@ -370,7 +375,7 @@ class Header extends Component {
                     <a href="#">AUD</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="navigation--mobile">
@@ -381,7 +386,7 @@ class Header extends Component {
             </div>
             <div className="navigation__center">
               <a className="ps-logo" href="index.html">
-                <img src="img/logo.png" alt="" />
+                <img src={require("../../assets/img/logo.png")} alt="" />
               </a>
             </div>
             <div className="navigation__right">
@@ -419,7 +424,7 @@ class Header extends Component {
           </div>
           <div className="navigation__content">
             <div className="navigation__actions">
-              <div className="ps-dropdown">
+              {/* <div className="ps-dropdown">
                 <a href="#">USD</a>
                 <ul className="ps-dropdown-menu">
                   <li>
@@ -432,7 +437,7 @@ class Header extends Component {
                     <a href="#">AUD</a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               <div className="header__actions">
                 <a className="ps-search-btn" href="#">
                   <i className="pe-7s-search"></i>
