@@ -20,7 +20,7 @@ class ShopCart extends Component {
           </div>
         </div>
         <div className="ps-cart__footer">
-          <h4>SubTotal: <span>$60.00</span></h4><a className="ps-btn" href="shopping-cart.html">View Cart</a><a className="ps-btn" href="shopping-cart.html">Checkout</a>
+          <h4>SubTotal: <span>$60.00</span></h4><a className="ps-btn" href={"/kosar/"}>Kosár</a><a className="ps-btn" href={"/rendeles/"}>Pénztár</a>
         </div>
       </div>
     );

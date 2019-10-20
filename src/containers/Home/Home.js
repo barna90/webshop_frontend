@@ -9,43 +9,10 @@ class Home extends Component {
         <div className="ps-page">
           <ul className="ps-list--categories">
             <li>
-              <a href="shop-4-column.html">Accessories</a>
+              <a href="shop-4-column.html">Női melegítők</a>
             </li>
             <li>
-              <a href="shop-4-column.html">Bottom</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Demin</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Dress</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Jackets</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Jewellery</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Men</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Shoes</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Swim</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">T-Shirt</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Tops</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Uncategories</a>
-            </li>
-            <li>
-              <a href="shop-4-column.html">Women</a>
+              <a href="shop-4-column.html">Férfi melegítők</a>
             </li>
           </ul>
           <div
