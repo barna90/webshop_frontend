@@ -8,7 +8,38 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import cartReducer from "./store/reducers/cartReducer";
 
-const store = createStore(cartReducer);
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem("state");
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (e) {
+    return undefined;
+  }
+};
+
+const saveState = state => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("state", serializedState);
+  } catch (e) {
+    // Ignore write errors;
+  }
+};
+
+const peristedState = loadState();
+
+const store = createStore(
+  // Other reducer
+  cartReducer,
+  peristedState
+);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>

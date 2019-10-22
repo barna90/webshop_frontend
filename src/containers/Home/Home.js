@@ -35,8 +35,7 @@ class Home extends Component {
   };
 
   render() {
-    const { productItems, addedItems } = this.props;
-    console.log(addedItems);
+    const { productItems } = this.props;
 
     return (
       <>
@@ -112,8 +111,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    productItems: state.productItems,
-    addedItems: state.addedItems
+    productItems: state.productItems
   };
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "@emotion/styled";
 
 // const TopHeaderLeft = styled.div(() => ({
 //   color: "##878787",
@@ -12,9 +12,10 @@ class Header extends Component {
   state = {};
 
   render() {
+    const { itemsInCart } = this.props;
     const headerCenterText = "10.000 Ft felett ingyenes szállítás!";
     const email = "info@melegito.hu";
-    const loginRegisterText = "Bejelentkezés / Regisztráció"
+    const loginRegisterText = "Bejelentkezés / Regisztráció";
 
     return (
       <>
@@ -64,12 +65,10 @@ class Header extends Component {
             <div className="navigation__center">
               <ul className="menu">
                 <li className="current-menu-item">
-                  <a href={'/'}>Főoldal</a>
+                  <a href={"/"}>Főoldal</a>
                 </li>
                 <li className="menu-item-has-children">
-                  <a href="shop-4-column.html">
-                    Termékek
-                  </a>
+                  <a href="shop-4-column.html">Termékek</a>
                   <span className="sub-toggle"></span>
                   <ul className="sub-menu">
                     <li>
@@ -86,10 +85,10 @@ class Header extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href={'/szallitas-fizetes/'}>Szállítás, visszaküldés</a>
+                  <a href={"/szallitas-fizetes/"}>Szállítás, visszaküldés</a>
                 </li>
                 <li>
-                  <a href={'/kapcsolat/'}>Kapcsolat</a>
+                  <a href={"/kapcsolat/"}>Kapcsolat</a>
                 </li>
               </ul>
             </div>
@@ -114,7 +113,7 @@ class Header extends Component {
                 <a className="ps-cart-toggle" href="#">
                   <i className="pe-7s-shopbag"></i>
                   <span>
-                    <i>0</i>
+                    <i>{itemsInCart.length}</i>
                   </span>
                 </a>
               </div>
@@ -497,4 +496,10 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    itemsInCart: state.addedItems
+  };
+};
+
+export default connect(mapStateToProps)(Header);

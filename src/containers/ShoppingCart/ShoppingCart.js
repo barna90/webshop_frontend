@@ -1,12 +1,67 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { sumBy } from "lodash";
 
 class ShoppingCart extends Component {
   state = {};
 
+  renderProductRow = () => {
+    const { itemsInCart } = this.props;
+
+    console.log("items", itemsInCart);
+
+    return itemsInCart.map(item => {
+      return (
+        <tr>
+          <td>
+            <a href="product-standard.html">
+              <img
+                src={require("../../assets/img/product/best-2-1.jpg")}
+                alt=""
+              />
+            </a>
+          </td>
+          <td>
+            <a href="product-standard.html">{item.name} - Cyan, M</a>
+          </td>
+          <td>{item.newPrice} Ft</td>
+          <td>
+            <div className="form-group--number">
+              <button className="up">
+                <i className="fa fa-plus"></i>
+              </button>
+              <button className="down">
+                <i className="fa fa-minus"></i>
+              </button>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="1"
+                value="1"
+              />
+            </div>
+          </td>
+          <td>
+            <p>$45.00</p>
+            <a className="ps-btn--close ps-btn--no-boder" href="#"></a>
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  sumProductsInCart = () => {
+    const { itemsInCart } = this.props;
+    return sumBy(itemsInCart, "newPrice");
+  };
+
   render() {
     return (
       <>
-        <div className="ps-hero bg--cover" data-background={require("../../assets/img/hero/shop.jpg")}>
+        <div
+          className="ps-hero bg--cover"
+          data-background={require("../../assets/img/hero/shop.jpg")}
+        >
           <div className="container">
             <h1>CART</h1>
           </div>
@@ -27,32 +82,32 @@ class ShoppingCart extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td><a href="product-standard.html"><img src={require("../../assets/img/product/best-2-1.jpg")} alt="" /></a></td>
-                        <td><a href="product-standard.html">Cyan Boheme - Cyan, M</a></td>
-                        <td>$45.00</td>
-                        <td>
-                          <div className="form-group--number">
-                            <button className="up"><i className="fa fa-plus"></i></button>
-                            <button className="down"><i className="fa fa-minus"></i></button>
-                            <input className="form-control" type="text" placeholder="1" value="1" />
-                          </div>
-                        </td>
-                        <td>
-                          <p>$45.00</p><a className="ps-btn--close ps-btn--no-boder" href="#"></a>
-                        </td>
-                      </tr>
+                      {this.renderProductRow()}
                       <tr className="coupon">
-                        <td colspan="2">
+                        <td colSpan="2">
                           <div className="form-group--inline">
                             <label>Coupon</label>
                             <div className="form-group__content">
-                              <input className="form-control" type="text" placeholder="Coupon Code" />
-                              <button className="ps-btn ps-btn--outline ps-btn--black">Apply coupon</button>
+                              <input
+                                className="form-control"
+                                type="text"
+                                placeholder="Coupon Code"
+                              />
+                              <button className="ps-btn ps-btn--outline ps-btn--black">
+                                Apply coupon
+                              </button>
                             </div>
                           </div>
                         </td>
-                        <td colspan="3"><a className="ps-btn ps-btn--outline ps-btn--black" href="#"> Update Cart</a></td>
+                        <td colSpan="3">
+                          <a
+                            className="ps-btn ps-btn--outline ps-btn--black"
+                            href="#"
+                          >
+                            {" "}
+                            Update Cart
+                          </a>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -63,23 +118,37 @@ class ShoppingCart extends Component {
                     <table className="table ps-table">
                       <tbody>
                         <tr>
-                          <td><strong>Subtotal</strong></td>
-                          <td>$45.00</td>
+                          <td>
+                            <strong>Subtotal</strong>
+                          </td>
+                          <td>{this.sumProductsInCart()} Ft</td>
                         </tr>
                         <tr>
-                          <td><strong>Shiping</strong></td>
                           <td>
-                            <p>Local Pickup: $15.00</p><a href="#">Calculate shipping</a>
+                            <strong>Shiping</strong>
+                          </td>
+                          <td>
+                            <p>Local Pickup: $15.00</p>
+                            <a href="#">Calculate shipping</a>
                           </td>
                         </tr>
                         <tr>
-                          <td><strong>Subtotal</strong></td>
-                          <td>$45.00</td>
+                          <td>
+                            <strong>Subtotal</strong>
+                          </td>
+                          <td>{this.sumProductsInCart()} Ft</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-                  <div className="footer"><a className="ps-btn ps-btn--outline ps-btn--black" href="checkout.html">Process to checkout</a></div>
+                  <div className="footer">
+                    <a
+                      className="ps-btn ps-btn--outline ps-btn--black"
+                      href="checkout.html"
+                    >
+                      Process to checkout
+                    </a>
+                  </div>
                 </figure>
               </div>
             </div>
@@ -90,4 +159,10 @@ class ShoppingCart extends Component {
   }
 }
 
-export default ShoppingCart;
+const mapStateToProps = state => {
+  return {
+    itemsInCart: state.addedItems
+  };
+};
+
+export default connect(mapStateToProps)(ShoppingCart);
