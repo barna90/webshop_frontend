@@ -1,9 +1,43 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import ProductListItem from "../../components/ProductListItem/ProductListItem";
+import { addToCart } from "../../store/actions/cartActions";
 
 class Home extends Component {
   state = {};
 
+  handleOnAddToCartClick = (e, id) => {
+    e.preventDefault();
+    this.props.addToCart(id);
+  };
+
+  renderProductItems = productItems => {
+    return productItems.map(item => (
+      <ProductListItem
+        key={item.id}
+        id={item.id}
+        title={item.name}
+        oldPrice={item.oldPrice}
+        newPrice={item.newPrice}
+        imageUrl={item.imageUrl}
+        imageUrlAlt={item.imageUrlAlt}
+        sizes={item.sizes}
+        discountPercent={
+          item.oldPrice
+            ? Math.round(
+                ((item.newPrice - item.oldPrice) / item.oldPrice) * -100 * 10
+              ) / 10
+            : null
+        }
+        handleOnAddToCartClick={this.handleOnAddToCartClick}
+      />
+    ));
+  };
+
   render() {
+    const { productItems, addedItems } = this.props;
+    console.log(addedItems);
+
     return (
       <>
         <div className="ps-page">
@@ -48,255 +82,26 @@ class Home extends Component {
                 </div>
               </div>
               <div className="ps-shopping__content">
-                <div className="masonry-wrapper" data-col-lg="4" data-col-md="3" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
+                <div
+                  className="masonry-wrapper"
+                  data-col-lg="4"
+                  data-col-md="3"
+                  data-col-sm="2"
+                  data-col-xs="1"
+                  data-gap="30"
+                  data-radio="100%"
+                >
                   <div className="ps-masonry">
                     <div className="grid-sizer"></div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-1-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-1-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Analogue Resin Strap Watch</a>
-                            <p className="ps-product__price"> $85.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-2-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-2-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">ASOS Ridley High Waist</a>
-                            <p className="ps-product__price"> $36.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-3-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-3-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Brown Sneaker Shoes</a>
-                            <p className="ps-product__price"> $45.00 – $53.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-4-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-4-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Calvin Klein Logo Sweatpants</a>
-                            <p className="ps-product__price"> $35.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge"><i> - 14.3%</i></span><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-5-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-5-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Cluse La Bohème Rose Gold</a>
-                            <p className="ps-product__price sale"> <del>$35.00</del>$30.00</p>
-                            <div className="ps-product__color">
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-1">
-                                <input className="form-control" type="radio" id="color-445" name="color-4"/>
-                                <label htmlFor="color-445"></label>
-                              </div>
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-2">
-                                <input className="form-control" type="radio" id="color-432" name="color-4"/>
-                                <label htmlFor="color-432"></label>
-                              </div>
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-3">
-                                <input className="form-control" type="radio" id="color-488" name="color-4"/>
-                                <label htmlFor="color-488"></label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge disabled"><i>Sold Out</i></span><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-6-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-6-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Cuffed Beanie</a>
-                            <p className="ps-product__price"> $15.00</p>
-                            <div className="ps-product__color">
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-1">
-                                <input className="form-control" type="radio" id="color-558" name="color-5"/>
-                                <label htmlFor="color-558"></label>
-                              </div>
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-2">
-                                <input className="form-control" type="radio" id="color-59" name="color-5"/>
-                                <label htmlFor="color-59"></label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-7-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-7-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Cyan Boheme</a>
-                            <p className="ps-product__price"> $45.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-8-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-8-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Denim Shell Top with Ruffle Front</a>
-                            <p className="ps-product__price"> $56.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/trend-1-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/trend-1-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Cyan Boheme</a>
-                            <p className="ps-product__price"> $85.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><span className="ps-product__badge"><i> - 14.3%</i></span><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/trend-5-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/trend-5-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Pink Leather Watch</a>
-                            <p className="ps-product__price sale"> <del>$35.00</del>$30.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-6-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-6-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Cuffed Beanie</a>
-                            <p className="ps-product__price"> $15.00</p>
-                            <div className="ps-product__color">
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-1">
-                                <input className="form-control" type="radio" id="color-1076" name="color-10"/>
-                                <label htmlFor="color-1076"></label>
-                              </div>
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-2">
-                                <input className="form-control" type="radio" id="color-1021" name="color-10"/>
-                                <label htmlFor="color-1021"></label>
-                              </div>
-                              <div className="ps-radio ps-radio--color ps-radio--inline color-3">
-                                <input className="form-control" type="radio" id="color-1020" name="color-10"/>
-                                <label htmlFor="color-1020"></label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="grid-item">
-                      <div className="grid-item__content-wrapper">
-                        <div className="ps-product">
-                          <div className="ps-product__thumbnail"><a className="ps-product__overlay" href="product-standard.html"></a><a className="ps-product__img" href="product-standard.html"><img src={require("../../assets/img/product/best-7-1.jpg")} alt=""/></a><a className="ps-product__img-alt" href="product-standard.html"><img src={require("../../assets/img/product/best-7-2.jpg")} alt=""/></a><a className="ps-product__favorite" href="#"><i className="fa fa-heart-o"></i></a>
-                            <ul className="ps-product__actions">
-                              <li><a href="product-standard.html">Quick Shop</a></li>
-                              <li><a href="product-standard.html">Add to cart</a></li>
-                            </ul>
-                            <p className="ps-product__size">S, M, L</p>
-                          </div>
-                          <div className="ps-product__content">
-                            <div className="ps-product__meta"><a href="shop-2-column.html"></a></div><a className="ps-product__title" href="product-standard.html">Cyan Boheme</a>
-                            <p className="ps-product__price"> $45.00</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {this.renderProductItems(productItems)}
                   </div>
                 </div>
               </div>
-              <div className="ps-shopping__footer"><a className="ps-btn ps-btn--outline ps-btn--black" href="#">Load more</a></div>
+              <div className="ps-shopping__footer">
+                <a className="ps-btn ps-btn--outline ps-btn--black" href="#">
+                  Load more
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -305,4 +110,22 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    productItems: state.productItems,
+    addedItems: state.addedItems
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: id => {
+      dispatch(addToCart(id));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
