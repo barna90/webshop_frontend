@@ -10,74 +10,148 @@ const initState = {
   productItems: [
     {
       id: 1,
-      name: "Obey noi gradiens melegito egyuttes",
+      brandId: 1,
+      name: "Don Jon férfi melegítő együttes 1",
       oldPrice: 8900,
-      newPrice: 6500,
+      price: 6900,
+      inStock: null,
+      image: {
+        id: 15,
+        fileId: "8ad5cb314f2946b2b06ec70575c9614f",
+        fileName: null,
+        extension: "jpg",
+        url: null,
+        contentType: "image/jpeg",
+        storageType: null,
+        mediaType: null,
+        enabled: true,
+        directory: null,
+        smallFileName: null,
+        mediumFileName: null,
+        largeFileName: null,
+        extraLargeFileName: null,
+        tags: ["Piros", "Kek"]
+      },
+      sizes: ["S", "M", "L"],
+      colors: ["fekete", "sarga", "kek"],
       imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
+      imageUrlAlt: "product/best-5-2.jpg"
     },
     {
       id: 2,
-      name: "Don Jon noi vastag melegito egyuttes",
-      oldPrice: 7500,
-      newPrice: 5500,
+      brandId: 2,
+      name: "Obey noi gradiens melegítő együttes 1",
+      oldPrice: 7900,
+      price: 6500,
+      inStock: null,
+      image: {
+        id: 15,
+        fileId: "8ad5cb314f2946b2b06ec70575c9614f",
+        fileName: null,
+        extension: "jpg",
+        url: null,
+        contentType: "image/jpeg",
+        storageType: null,
+        mediaType: null,
+        enabled: true,
+        directory: null,
+        smallFileName: null,
+        mediumFileName: null,
+        largeFileName: null,
+        extraLargeFileName: null,
+        tags: ["Piros", "Kek"]
+      },
+      sizes: ["S", "M", "L"],
+      colors: ["fekete", "sarga", "kek"],
       imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
+      imageUrlAlt: "product/best-5-2.jpg"
     },
     {
       id: 3,
-      name: "Obey noi gradiens melegito egyuttes",
-      newPrice: 6500,
+      brandId: 1,
+      name: "Don Jon férfi melegítő együttes 2",
+      oldPrice: 8500,
+      price: 5000,
+      inStock: null,
+      image: {
+        id: 15,
+        fileId: "8ad5cb314f2946b2b06ec70575c9614f",
+        fileName: null,
+        extension: "jpg",
+        url: null,
+        contentType: "image/jpeg",
+        storageType: null,
+        mediaType: null,
+        enabled: true,
+        directory: null,
+        smallFileName: null,
+        mediumFileName: null,
+        largeFileName: null,
+        extraLargeFileName: null,
+        tags: ["Piros", "Kek"]
+      },
+      sizes: ["S", "M", "L"],
+      colors: ["fekete", "sarga", "kek"],
       imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
+      imageUrlAlt: "product/best-5-2.jpg"
     },
     {
       id: 4,
-      name: "Don Jon noi vastag melegito egyuttes",
-      oldPrice: 7500,
-      newPrice: 5500,
+      brandId: 2,
+      name: "Obey noi 3 reszes melegítő együttes",
+      oldPrice: 6900,
+      price: 5900,
+      inStock: null,
+      image: {
+        id: 15,
+        fileId: "8ad5cb314f2946b2b06ec70575c9614f",
+        fileName: null,
+        extension: "jpg",
+        url: null,
+        contentType: "image/jpeg",
+        storageType: null,
+        mediaType: null,
+        enabled: true,
+        directory: null,
+        smallFileName: null,
+        mediumFileName: null,
+        largeFileName: null,
+        extraLargeFileName: null,
+        tags: ["Piros", "Kek"]
+      },
+      sizes: ["S", "M", "L"],
+      colors: ["fekete", "sarga", "kek"],
       imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
+      imageUrlAlt: "product/best-5-2.jpg"
     },
     {
       id: 5,
-      name: "Obey noi gradiens melegito egyuttes",
-      oldPrice: 8900,
-      newPrice: 6500,
-      imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
-    },
-    {
-      id: 6,
-      name: "Don Jon noi vastag melegito egyuttes",
+      brandId: 1,
+      name: "Don Jon férfi melegítő együttes 3",
       oldPrice: 7500,
-      newPrice: 5500,
+      price: 5500,
+      inStock: null,
+      image: {
+        id: 15,
+        fileId: "8ad5cb314f2946b2b06ec70575c9614f",
+        fileName: null,
+        extension: "jpg",
+        url: null,
+        contentType: "image/jpeg",
+        storageType: null,
+        mediaType: null,
+        enabled: true,
+        directory: null,
+        smallFileName: null,
+        mediumFileName: null,
+        largeFileName: null,
+        extraLargeFileName: null,
+        tags: ["Piros", "Kek"]
+      },
+      sizes: ["S", "M", "L"],
+      colors: ["fekete", "sarga", "kek"],
       imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
-    },
-    {
-      id: 7,
-      name: "Obey noi gradiens melegito egyuttes",
-      oldPrice: 8900,
-      newPrice: 6500,
-      imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
-    },
-    {
-      id: 8,
-      name: "Don Jon noi vastag melegito egyuttes",
-      oldPrice: 7500,
-      newPrice: 5500,
-      imageUrl: "product/best-5-1.jpg",
-      imageUrlAlt: "product/best-5-2.jpg",
-      sizes: "S, M, L"
+      imageUrlAlt: "product/best-5-2.jpg"
     }
   ],
   addedItems: [],
@@ -87,7 +161,7 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
   if (action.type === ADD_TO_CART) {
-    let addedItem = state.items.find(item => item.id === action.id);
+    let addedItem = state.productItems.find(item => item.id === action.id);
     //check if the action id exists in the addedItems
     let existed_item = state.addedItems.find(item => action.id === item.id);
     if (existed_item) {
@@ -123,7 +197,7 @@ const cartReducer = (state = initState, action) => {
   }
   //INSIDE CART COMPONENT
   if (action.type === ADD_QUANTITY) {
-    let addedItem = state.items.find(item => item.id === action.id);
+    let addedItem = state.productItems.find(item => item.id === action.id);
     addedItem.quantity += 1;
     let newTotal = state.total + addedItem.price;
     return {
@@ -132,7 +206,7 @@ const cartReducer = (state = initState, action) => {
     };
   }
   if (action.type === SUB_QUANTITY) {
-    let addedItem = state.items.find(item => item.id === action.id);
+    let addedItem = state.productItems.find(item => item.id === action.id);
     //if the qt == 0 then it should be removed
     if (addedItem.quantity === 1) {
       let new_items = state.addedItems.filter(item => item.id !== action.id);

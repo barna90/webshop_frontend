@@ -13,14 +13,14 @@ class ShopCart extends Component {
         key={item.id}
         id={item.id}
         name={item.name}
-        price={item.newPrice}
+        price={item.price}
       />
     ));
   };
 
   sumProductsInCart = () => {
     const { itemsInCart } = this.props;
-    return sumBy(itemsInCart, "newPrice");
+    return sumBy(itemsInCart, "price");
   };
 
   render() {

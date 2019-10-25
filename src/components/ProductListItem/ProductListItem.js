@@ -8,12 +8,14 @@ class ProductListItem extends Component {
     <img src={require("../../assets/img/" + image)} alt="" />
   );
 
+  sizesFormatter = sizes => sizes.join(", ");
+
   render() {
     const {
       id,
       title,
       oldPrice,
-      newPrice,
+      price,
       imageUrl,
       imageUrlAlt,
       sizes,
@@ -54,7 +56,7 @@ class ProductListItem extends Component {
                   </a>
                 </li>
               </ul>
-              <p className="ps-product__size">{sizes}</p>
+              <p className="ps-product__size">{this.sizesFormatter(sizes)}</p>
             </div>
             <div className="ps-product__content">
               <div className="ps-product__meta">
@@ -67,10 +69,10 @@ class ProductListItem extends Component {
                 <p className="ps-product__price sale">
                   {" "}
                   <del>{oldPrice} Ft</del>
-                  {newPrice} Ft
+                  {price} Ft
                 </p>
               )}
-              {!oldPrice && <p className="ps-product__price">{newPrice} Ft</p>}
+              {!oldPrice && <p className="ps-product__price">{price} Ft</p>}
               <div className="ps-product__color">
                 <div className="ps-radio ps-radio--color ps-radio--inline color-1">
                   <input

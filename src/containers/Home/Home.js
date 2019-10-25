@@ -18,14 +18,15 @@ class Home extends Component {
         id={item.id}
         title={item.name}
         oldPrice={item.oldPrice}
-        newPrice={item.newPrice}
+        price={item.price}
         imageUrl={item.imageUrl}
         imageUrlAlt={item.imageUrlAlt}
         sizes={item.sizes}
+        colors={item.colors}
         discountPercent={
           item.oldPrice
             ? Math.round(
-                ((item.newPrice - item.oldPrice) / item.oldPrice) * -100 * 10
+                ((item.price - item.oldPrice) / item.oldPrice) * -100 * 10
               ) / 10
             : null
         }

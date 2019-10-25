@@ -1,0 +1,83 @@
+{
+  "items": [
+    {
+      "id": 3,
+      "brandId": 1,
+      "name": "Don Jon férfi melegítő együttes",
+      "internalName": "Don Jon ferfi 1",
+      "regularPrice": 8900.0,
+      "salePrice": 6900.0,
+      "resellerPrice": 5500.0,
+      "wholesalePrice": 3500.0,
+      "inStock": null,
+      "image": {
+        "id": 15,
+        "fileId": "8ad5cb314f2946b2b06ec70575c9614f",
+        "fileName": null,
+        "extension": "jpg",
+        "url": null,
+        "contentType": "image/jpeg",
+        "storageType": null,
+        "mediaType": null,
+        "enabled": true,
+        "directory": null,
+        "smallFileName": null,
+        "mediumFileName": null,
+        "largeFileName": null,
+        "extraLargeFileName": null,
+        "tags": ["Piros", "Kek"]
+      },
+      "enabled": true,
+      "variations": null
+    },
+    {
+      "id": 7,
+      "brandId": 1,
+      "name": "Don Jon férfi szarmaztatott 1",
+      "internalName": "Don Jon szarmaztatott  1",
+      "regularPrice": 8900.0,
+      "salePrice": 6900.0,
+      "resellerPrice": 5500.0,
+      "wholesalePrice": 3500.0,
+      "inStock": null,
+      "image": {
+        "id": 20,
+        "fileId": "1c4a352c72e940aaa49b44ccd4d7fbab",
+        "fileName": null,
+        "extension": "jpg",
+        "url": null,
+        "contentType": "image/jpeg",
+        "storageType": null,
+        "mediaType": null,
+        "enabled": true,
+        "directory": null,
+        "smallFileName": null,
+        "mediumFileName": null,
+        "largeFileName": null,
+        "extraLargeFileName": null,
+        "tags": ["Fekete", "Sarga"]
+      },
+      "enabled": true,
+      "variations": null
+    },
+    {
+      "id": 8,
+      "brandId": 1,
+      "name": "Don Jon férfi szarmaztatott 2",
+      "internalName": "Don Jon szarmaztatott 2",
+      "regularPrice": 8900.0,
+      "salePrice": 6900.0,
+      "resellerPrice": 5500.0,
+      "wholesalePrice": 3500.0,
+      "inStock": null,
+      "image": null,
+      "enabled": true,
+      "variations": null
+    }
+  ],
+  "totalElements": 3,
+  "currentPage": 0,
+  "totalPages": 1,
+  "pageSize": 40,
+  "empty": false
+}
