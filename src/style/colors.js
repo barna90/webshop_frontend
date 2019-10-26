@@ -1,3 +1,4 @@
 export default {
-    white: '#FFFFFF'
+    Sárga: '#ffe921',
+    Rózsaszín: '#ff7dbc',
 };

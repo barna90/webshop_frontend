@@ -1,18 +1,35 @@
 import React, { Component } from "react";
 import { CirclePicker } from 'react-color';
+import preDefinedColors from '../../style/colors';
 
 class ProductListItem extends Component {
-  state = {};
+  state = {
+    selectedColor: this.props.colors && this.props.colors.length > 0 ? 
+                      preDefinedColors[this.props.colors[0]] : null,
+  };
 
-  // TODO config image folder
-  imageFormatter = image => (
-    <img src={require("../../assets/img/" + image)} alt="" />
-  );
+  getKeyByValue = (object, value) => Object.keys(object).find(key => object[key].toUpperCase() === value.toUpperCase());
+
+  hexFromColorNames = colors => colors.map(color => preDefinedColors[color]);
 
   sizesFormatter = sizes => sizes.join(", ");
 
+  // TODO config image folder
+  imageFormatter = image => (
+    <img src={require("../../assets/images/productimages/" + image)} alt="" />
+  );
+
+  findImageFileNameBySelectedColor = selectedColor => {
+    console.log("selectedColor", selectedColor);
+    const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
+    const selectedImage = this.props.image.find(img => img.tags.indexOf(colorName) > -1);
+    return selectedImage ? this.imageFormatter(selectedImage.fileName) : null;
+  };
+
   handleChangeComplete = (color, event) => {
-    console.log(color);
+    this.setState({
+      selectedColor: color.hex,
+    });
   };
 
   render() {
@@ -21,9 +38,9 @@ class ProductListItem extends Component {
       title,
       oldPrice,
       price,
-      imageUrl,
-      imageUrlAlt,
+      image,
       sizes,
+      colors,
       discountPercent,
       handleOnAddToCartClick
     } = this.props;
@@ -43,10 +60,10 @@ class ProductListItem extends Component {
                 </span>
               )}
               <a className="ps-product__img" href={'/termek/' + id}>
-                {this.imageFormatter(imageUrl)}
+                {this.findImageFileNameBySelectedColor(this.state.selectedColor)}
               </a>
               <a className="ps-product__img-alt" href={'/termek/' + id}>
-                {this.imageFormatter(imageUrlAlt)}
+                {this.findImageFileNameBySelectedColor(this.state.selectedColor)}
               </a>
               <a className="ps-product__favorite" href="#">
                 <i className="fa fa-heart-o"></i>
@@ -106,7 +123,12 @@ class ProductListItem extends Component {
                   />
                   <label htmlFor="color-488"></label>
                 </div> */}
-                <CirclePicker colors={['#4D4D4D', '#999999', '#000000']} circleSize={17} circleSpacing={4} onChangeComplete={ this.handleChangeComplete } />
+                <CirclePicker 
+                  color={this.state.selectedColor} 
+                  colors={this.hexFromColorNames(colors)} 
+                  circleSize={17} 
+                  circleSpacing={4} 
+                  onChangeComplete={ this.handleChangeComplete } />
               </div>
             </div>
           </div>

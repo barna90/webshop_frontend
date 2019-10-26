@@ -24,6 +24,7 @@ class Home extends Component {
         title={item.name}
         oldPrice={item.oldPrice}
         price={item.price}
+        image={item.image}
         imageUrl={item.imageUrl}
         imageUrlAlt={item.imageUrlAlt}
         sizes={item.sizes}
