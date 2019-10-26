@@ -2,9 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import { addToCart } from "../../store/actions/cartActions";
+import { getProductList } from "../../store/actions/productListActions";
 
 class Home extends Component {
   state = {};
+
+  componentWillMount(){
+    this.props.getProductList();
+  }
 
   handleOnAddToCartClick = (e, id) => {
     e.preventDefault();
@@ -112,7 +117,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    productItems: state.productItems
+    productItems: state.productList.productItems
   };
 };
 
@@ -120,6 +125,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addToCart: id => {
       dispatch(addToCart(id));
+    },
+    getProductList: () => {
+      dispatch(getProductList());
     }
   };
 };

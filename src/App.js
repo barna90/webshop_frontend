@@ -31,33 +31,15 @@ class App extends Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/productdetails">
-              <ProductDetails />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/kapcsolat">
-              <Contact />
-            </Route>
-            <Route path="/szallitas-fizetes">
-              <FAQ />
-            </Route>
-            <Route path="/kosar">
-              <ShoppingCart />
-            </Route>
-            <Route path="/rendeles">
-              <Checkout />
-            </Route>
-            <Route path="/bejelentkezes">
-              <MyAccount />
-            </Route>
-            <Route path="/nyomkovetes">
-              <OrdersTracking />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
+            <Route path="/termek/:id" component={ProductDetails} />
+            <Route path="/users" component={Users} />
+            <Route path="/kapcsolat" component={Contact} />
+            <Route path="/szallitas-fizetes" component={FAQ} />
+            <Route path="/kosar" component={ShoppingCart} />
+            <Route path="/rendeles" component={Checkout} />
+            <Route path="/bejelentkezes" component={MyAccount} />
+            <Route path="/nyomkovetes" component={OrdersTracking} />
+            <Route path="/" component={Home} />
           </Switch>
 
           <Footer />

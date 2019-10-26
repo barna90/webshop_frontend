@@ -5,8 +5,13 @@ import "./assets/vendors/font-stroke/css/font-stroke.min.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
+import { persistStore, persistReducer } from 'redux-persist';
 import cartReducer from "./store/reducers/cartReducer";
+import productReducer from "./store/reducers/productReducer";
+import productListReducer from "./store/reducers/productListReducer";
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import { PersistGate } from 'redux-persist/integration/react'
 
 // const loadState = () => {
 //   try {
@@ -41,11 +46,28 @@ import cartReducer from "./store/reducers/cartReducer";
 //   saveState(store.getState());
 // });
 
-const store = createStore(cartReducer);
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['cart'] // only navigation will be persisted
+}
+
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  product: productReducer, 
+  productList: productListReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

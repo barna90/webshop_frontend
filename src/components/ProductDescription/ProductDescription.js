@@ -5,6 +5,8 @@ class ProductDescription extends Component {
   state = {};
 
   render() {
+    const { name } = this.props;
+
     return (
       <div className="container">
         <div className="ps-product--detail">
@@ -29,7 +31,7 @@ class ProductDescription extends Component {
               </div>
             </div>
             <div className="ps-product__info">
-              <h1>Analogue Resin Strap Watch</h1>
+              <h1>{name}</h1>
               <h4 className="ps-product__price">$85.00</h4>
               <div className="ps-product__desc">
                 <p>Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Nike. Perfect for pairing with denim and white kicks for a stylish sporty vibe.</p>

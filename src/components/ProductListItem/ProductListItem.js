@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CirclePicker } from 'react-color';
 
 class ProductListItem extends Component {
   state = {};
@@ -9,6 +10,10 @@ class ProductListItem extends Component {
   );
 
   sizesFormatter = sizes => sizes.join(", ");
+
+  handleChangeComplete = (color, event) => {
+    console.log(color);
+  };
 
   render() {
     const {
@@ -30,17 +35,17 @@ class ProductListItem extends Component {
             <div className="ps-product__thumbnail">
               <a
                 className="ps-product__overlay"
-                href="product-standard.html"
+                href={'/termek/' + id}
               ></a>
               {discountPercent && (
                 <span className="ps-product__badge">
                   <i> - {discountPercent}%</i>
                 </span>
               )}
-              <a className="ps-product__img" href="product-standard.html">
+              <a className="ps-product__img" href={'/termek/' + id}>
                 {this.imageFormatter(imageUrl)}
               </a>
-              <a className="ps-product__img-alt" href="product-standard.html">
+              <a className="ps-product__img-alt" href={'/termek/' + id}>
                 {this.imageFormatter(imageUrlAlt)}
               </a>
               <a className="ps-product__favorite" href="#">
@@ -48,7 +53,7 @@ class ProductListItem extends Component {
               </a>
               <ul className="ps-product__actions">
                 <li>
-                  <a href="product-standard.html">Quick Shop</a>
+                  <a href={'/termek/' + id}>Quick Shop</a>
                 </li>
                 <li>
                   <a href="#" onClick={e => handleOnAddToCartClick(e, id)}>
@@ -62,7 +67,7 @@ class ProductListItem extends Component {
               <div className="ps-product__meta">
                 <a href="shop-2-column.html"></a>
               </div>
-              <a className="ps-product__title" href="product-standard.html">
+              <a className="ps-product__title" href={'/termek/' + id}>
                 {title}
               </a>
               {oldPrice && (
@@ -74,7 +79,7 @@ class ProductListItem extends Component {
               )}
               {!oldPrice && <p className="ps-product__price">{price} Ft</p>}
               <div className="ps-product__color">
-                <div className="ps-radio ps-radio--color ps-radio--inline color-1">
+                {/* <div className="ps-radio ps-radio--color ps-radio--inline color-1">
                   <input
                     className="form-control"
                     type="radio"
@@ -100,7 +105,8 @@ class ProductListItem extends Component {
                     name="color-4"
                   />
                   <label htmlFor="color-488"></label>
-                </div>
+                </div> */}
+                <CirclePicker colors={['#4D4D4D', '#999999', '#000000']} circleSize={17} circleSpacing={4} onChangeComplete={ this.handleChangeComplete } />
               </div>
             </div>
           </div>
