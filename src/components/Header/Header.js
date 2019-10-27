@@ -189,7 +189,7 @@ class Header extends Component {
                 <a className="ps-cart-toggle" href="#">
                   <i className="pe-7s-shopbag"></i>
                   <span>
-                    <i>0</i>
+                    <i>{itemsInCart.length}</i>
                   </span>
                 </a>
               </div>

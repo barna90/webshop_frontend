@@ -47,7 +47,7 @@ import {
         tags: ["Rózsaszín"]
       },
     ],
-    sizes: ["S", "M", "L"],
+    sizes: {"Sárga": ["M","L","XL","XXL"],"Rózsaszín": ["S","M"]},
     colors: ["Sárga", "Rózsaszín"],
   },
   {
@@ -94,7 +94,7 @@ import {
         tags: ["Rózsaszín"]
       },
     ],
-    sizes: ["S", "M", "L"],
+    sizes: {"Sárga": ["M","L","XL","XXL"],"Rózsaszín": ["S","M"]},
     colors: ["Sárga", "Rózsaszín"],
   },
   {
@@ -141,7 +141,7 @@ import {
         tags: ["Rózsaszín"]
       },
     ],
-    sizes: ["S", "M", "L"],
+    sizes: {"Sárga": ["M","L","XL","XXL"],"Rózsaszín": ["S","M"]},
     colors: ["Sárga", "Rózsaszín"],
   },
   {
@@ -188,7 +188,7 @@ import {
         tags: ["Rózsaszín"]
       },
     ],
-    sizes: ["S", "M", "L"],
+    sizes: {"Sárga": ["M","L","XL","XXL"],"Rózsaszín": ["S","M"]},
     colors: ["Sárga", "Rózsaszín"],
   },
   {
@@ -235,7 +235,7 @@ import {
         tags: ["Rózsaszín"]
       },
     ],
-    sizes: ["S", "M", "L"],
+    sizes: {"Sárga": ["M","L","XL","XXL"],"Rózsaszín": ["S","M"]},
     colors: ["Sárga", "Rózsaszín"],
   }
 ];

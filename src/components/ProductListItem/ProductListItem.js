@@ -20,10 +20,15 @@ class ProductListItem extends Component {
   );
 
   findImageFileNameBySelectedColor = selectedColor => {
-    console.log("selectedColor", selectedColor);
     const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
     const selectedImage = this.props.image.find(img => img.tags.indexOf(colorName) > -1);
     return selectedImage ? this.imageFormatter(selectedImage.fileName) : null;
+  };
+
+  
+  getSizesBySelectedColor = selectedColor => {
+    const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
+    return this.sizesFormatter(this.props.sizes[colorName]);
   };
 
   handleChangeComplete = (color, event) => {
@@ -38,8 +43,6 @@ class ProductListItem extends Component {
       title,
       oldPrice,
       price,
-      image,
-      sizes,
       colors,
       discountPercent,
       handleOnAddToCartClick
@@ -78,7 +81,7 @@ class ProductListItem extends Component {
                   </a>
                 </li>
               </ul>
-              <p className="ps-product__size">{this.sizesFormatter(sizes)}</p>
+              <p className="ps-product__size">{this.getSizesBySelectedColor(this.state.selectedColor)}</p>
             </div>
             <div className="ps-product__content">
               <div className="ps-product__meta">
