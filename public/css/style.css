@@ -2974,7 +2974,12 @@ textarea.form-control {
 }
 
 .ps-variant.ps-variant--size.active .ps-variant__size {
-  color: #222;
+  /* color: #222; */
+  color: white;
+}
+
+.ps-variant.ps-variant--size.active {
+  background-color: black;
 }
 
 .ps-variant.ps-variant--color:before {
@@ -3032,10 +3037,10 @@ textarea.form-control {
   border-color: #000;
 }
 
-.ps-variant.active .ps-variant__tooltip {
+/* .ps-variant.active .ps-variant__tooltip {
   visibility: visible;
   opacity: 1;
-}
+} */
 
 .ps-post {
   -webkit-transition: all 0.4s ease;

@@ -5,19 +5,30 @@ import { addToCart } from "../../store/actions/cartActions";
 import { getProductList } from "../../store/actions/productListActions";
 
 class Home extends Component {
-  state = {};
+  state = {
+    maxItems: 4
+  };
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.getProductList();
   }
 
-  handleOnAddToCartClick = (e, id) => {
+  // handleOnAddToCartClick = (e, id) => {
+  //   e.preventDefault();
+  //   this.props.addToCart(id);
+  // };
+
+  onLoadMoreClick = e => {
     e.preventDefault();
-    this.props.addToCart(id);
+    this.setState(prevState => ({
+      maxItems: prevState.maxItems + 3
+    }));
   };
 
   renderProductItems = productItems => {
-    return productItems.map(item => (
+    const { maxItems } = this.state;
+
+    return productItems.slice(0, maxItems).map(item => (
       <ProductListItem
         key={item.id}
         id={item.id}
@@ -36,13 +47,14 @@ class Home extends Component {
               ) / 10
             : null
         }
-        handleOnAddToCartClick={this.handleOnAddToCartClick}
+        // handleOnAddToCartClick={this.handleOnAddToCartClick}
       />
     ));
   };
 
   render() {
     const { productItems } = this.props;
+    const { maxItems } = this.state;
 
     return (
       <>
@@ -103,11 +115,17 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="ps-shopping__footer">
-                <a className="ps-btn ps-btn--outline ps-btn--black" href="#">
-                  Load more
-                </a>
-              </div>
+              {productItems && maxItems < productItems.length && (
+                <div className="ps-shopping__footer">
+                  <a
+                    className="ps-btn ps-btn--outline ps-btn--black"
+                    href="#"
+                    onClick={this.onLoadMoreClick}
+                  >
+                    Load more
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>

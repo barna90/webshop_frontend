@@ -8,6 +8,7 @@ class ShopCart extends Component {
 
   renderProductsInCart = () => {
     const { itemsInCart } = this.props;
+    console.log(itemsInCart);
     return itemsInCart.map(item => (
       <CartProduct
         key={item.id}

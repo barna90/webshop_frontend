@@ -7,10 +7,12 @@ import {
 } from "./actionTypes/cartActions";
 
 //add cart action
-export const addToCart = id => {
+export const addToCart = (id, selectedColor, selectedSize) => {
   return {
     type: ADD_TO_CART,
-    id
+    id,
+    selectedColor,
+    selectedSize
   };
 };
 //remove item action
