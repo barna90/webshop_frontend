@@ -13,8 +13,13 @@ class ShoppingCart extends Component {
       return (
         <ShoppingCartProductRow
           id={item.id}
+          variationId={item.variationId}
           name={item.name}
           price={item.price}
+          quantity={item.quantity}
+          selectedColor={item.selectedColor}
+          selectedSize={item.selectedSize}
+          coverImageFileName={item.coverImageFileName}
         />
       );
     });
@@ -114,7 +119,7 @@ class ShoppingCart extends Component {
                   <div className="footer">
                     <a
                       className="ps-btn ps-btn--outline ps-btn--black"
-                      href="checkout.html"
+                      href={"/rendeles"}
                     >
                       Process to checkout
                     </a>

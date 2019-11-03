@@ -2,10 +2,21 @@ import React, { Component } from "react";
 import { CirclePicker } from "react-color";
 import SizeGuide from "../SizeGuide/SizeGuide";
 import preDefinedColors from "../../style/colors";
+import styled from '@emotion/styled';
+
+const QuantityError = styled.div`
+  font-size: 12px;
+  margin-bottom: 1rem;
+  color: red;
+`;
 
 // TODO test 5-6 kepnel
 class ProductDescription extends Component {
-  state = {};
+  state = {
+    quantity: 1,
+    showQuantityError: false,
+    showSizeOrColorError: false,
+  };
 
   // TODO commons
   getKeyByValue = (object, value) =>
@@ -15,6 +26,63 @@ class ProductDescription extends Component {
 
   // TODO path to commons
   hexFromColorNames = colors => colors.map(color => preDefinedColors[color]);
+
+  incrementQuantity = () => {
+    this.setState(prevState => ({
+      quantity: prevState.quantity + 1
+    }));
+  };
+
+  decrementQuantity = () => {
+    this.setState(prevState => ({
+      quantity: prevState.quantity + -1
+    }));
+  };
+
+  onIncrementQuantityClick = () => {
+    const { variationsCount } = this.props;
+    const { quantity } = this.state;
+
+    if (variationsCount > quantity) {
+      this.incrementQuantity();
+    } else {
+      this.setState({
+        showQuantityError: true
+      });
+      setTimeout( () => {
+          this.setState({
+            showQuantityError: false
+          });
+      }, 5000);
+    }
+  };
+
+  onDecrementQuantityClick = () => {
+    const { quantity } = this.state;
+
+    if (quantity > 1) {
+      this.decrementQuantity();
+    }
+  };
+
+  onAddTocartClick = (e) => {
+    e.preventDefault();
+    const { handleOnAddToCartClick, selectedColor, selectedSize } = this.props;
+    const { quantity } = this.state;
+
+    if (selectedColor && selectedSize) {
+      handleOnAddToCartClick(quantity);
+    } else {
+      this.setState({
+        showSizeOrColorError: true
+      });
+      setTimeout( () => {
+          this.setState({
+            showSizeOrColorError: false
+          });
+      }, 5000);
+    }
+  }
 
   // TODO path to commons
   renderImagesForProductGallery = images => {
@@ -50,21 +118,17 @@ class ProductDescription extends Component {
   };
 
   filterImagesBySelectedColor = selectedColor => {
-    const { image } = this.props;
+    const { images } = this.props;
     const selectedColorName = this.getKeyByValue(
       preDefinedColors,
       selectedColor
     );
-    return image.filter(img => img.tags.indexOf(selectedColorName) > -1);
+    return images.filter(img => img.tags.indexOf(selectedColorName) > -1);
   };
 
   renderSizes = () => {
-    const { sizes, selectedColor, selectedSize, selectSize } = this.props;
-    const selectedColorName = this.getKeyByValue(
-      preDefinedColors,
-      selectedColor
-    );
-    return sizes[selectedColorName].map(size => {
+    const { sizes, selectedSize, selectSize } = this.props;
+    return sizes.map(size => {
       return (
         <div
           className={
@@ -82,12 +146,12 @@ class ProductDescription extends Component {
 
   render() {
     const {
-      id,
       name,
       price,
-      handleOnAddToCartClick,
       colors,
       selectedColor,
+      selectedSize,
+      variationsCount,
       handleColorChangeComplete
     } = this.props;
 
@@ -152,19 +216,19 @@ class ProductDescription extends Component {
                 </figure>
               </div>
               <div className="ps-product__shopping">
-                <div className="form-group--number">
-                  <button className="up">
+                <div className={"form-group--number " + (variationsCount > 0 ? '' : 'disabled')}>
+                  <button className="up" onClick={variationsCount > 0 ? this.onIncrementQuantityClick : undefined}>
                     <i className="fa fa-plus"></i>
                   </button>
-                  <button className="down">
+                  <button className="down" onClick={this.onDecrementQuantityClick}>
                     <i className="fa fa-minus"></i>
                   </button>
-                  <input className="form-control" type="text" placeholder="1" />
+                  <input className="form-control" type="text" placeholder={this.state.quantity} readOnly/>
                 </div>
                 <a
                   className="ps-btn"
                   href="#"
-                  onClick={e => handleOnAddToCartClick(e, id)}
+                  onClick={e => this.onAddTocartClick(e)}
                 >
                   Add to cart
                 </a>
@@ -172,6 +236,15 @@ class ProductDescription extends Component {
                   <i className="fa fa-heart-o"></i>
                 </a>
               </div>
+              <QuantityError>
+                {
+                  (this.state.showSizeOrColorError && !(selectedSize && selectedColor)) ?
+                  <span>Kosárba rakás előtt válassza ki a kívánt színt és méretet!</span> :
+                  this.state.showQuantityError ? 
+                  <span>A kiválasztott színből és méretből maximum {variationsCount} db van készleten.</span> : 
+                  <span>&nbsp;</span>
+                }
+              </QuantityError>
               <div className="ps-product__links">
                 <a className="ps-modal-link" href="#">
                   Size Guide

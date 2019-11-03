@@ -6,19 +6,19 @@ class CartProduct extends Component {
   state = {};
 
   onRemoveClick = () => {
-    const { id } = this.props;
-    this.props.removeItem(id);
+    const { id, variationId } = this.props;
+    this.props.removeItem(id, variationId);
   };
 
   render() {
-    const { name, price } = this.props;
+    const { name, price, quantity, selectedColor, selectedSize, coverImageFileName } = this.props;
 
     return (
       <div className="ps-product--cart">
         <div className="ps-product__thumbnail">
           <a href="product-standard.html">
             <img
-              src={require("../../../assets/img/product/best-5-1.jpg")}
+              src={require("../../../assets/images/productimages/" + coverImageFileName)}
               alt=""
             />
           </a>
@@ -28,8 +28,8 @@ class CartProduct extends Component {
           ></span>
         </div>
         <div className="ps-product__content">
-          <a href="#">{name}</a>
-          <span>1x {price} Ft</span>
+          <a href="#">{name} - {selectedColor}, {selectedSize}</a>
+          <span>{quantity}x {price} Ft</span>
         </div>
       </div>
     );
@@ -38,8 +38,8 @@ class CartProduct extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeItem: id => {
-      dispatch(removeItem(id));
+    removeItem: (id, variationId) => {
+      dispatch(removeItem(id, variationId));
     }
   };
 };

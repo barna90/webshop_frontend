@@ -7,25 +7,25 @@ class ShoppingCartProductRow extends Component {
 
   onRemoveClick = e => {
     e.preventDefault();
-    const { id } = this.props;
-    this.props.removeItem(id);
+    const { id, variationId } = this.props;
+    this.props.removeItem(id, variationId);
   };
 
   render() {
-    const { name, price } = this.props;
+    const { name, price, selectedColor, selectedSize, coverImageFileName } = this.props;
 
     return (
       <tr>
         <td>
           <a href="product-standard.html">
             <img
-              src={require("../../../assets/img/product/best-2-1.jpg")}
+              src={require("../../../assets/images/productimages/" + coverImageFileName)}
               alt=""
             />
           </a>
         </td>
         <td>
-          <a href="product-standard.html">{name} - Cyan, M</a>
+          <a href="product-standard.html">{name} - {selectedColor}, {selectedSize}</a>
         </td>
         <td>{price} Ft</td>
         <td>
@@ -59,8 +59,8 @@ class ShoppingCartProductRow extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeItem: id => {
-      dispatch(removeItem(id));
+    removeItem: (id, variationId) => {
+      dispatch(removeItem(id, variationId));
     }
   };
 };

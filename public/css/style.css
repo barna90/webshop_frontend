@@ -2768,18 +2768,32 @@ textarea.form-control {
   left: 10px;
 }
 
+.form-group--number.disabled button.up {
+  right: 10px;
+  color: #E2E2E2;
+}
+
+.form-group--number.disabled button.down {
+  left: 10px;
+  color: #E2E2E2;
+}
+
 .form-group--number .form-control {
-  border: 1px solid #222;
+  border: 1px solid #222; /*külső*/
   height: 40px;
   padding: 0 25px;
   text-align: center;
   font-size: 1.5rem;
-  color: #222;
+  color: #222; /*betűszín*/
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
   border-radius: 50px;
   background-color: transparent;
+}
+
+.form-group--number.disabled .form-control {
+  border: 1px solid #E2E2E2;
 }
 
 .form-group--number .form-control::-webkit-input-placeholder {
@@ -2796,6 +2810,22 @@ textarea.form-control {
 
 .form-group--number .form-control:-ms-input-placeholder {
   color: #222;
+}
+
+.form-group--number.disabled .form-control::-webkit-input-placeholder {
+  color: #E2E2E2;
+}
+
+.form-group--number.disabled .form-control.::-moz-placeholder {
+  color: #E2E2E2;
+}
+
+.form-group--number.disabled .form-control:-moz-placeholder {
+  color: #E2E2E2;
+}
+
+.form-group--number.disabled .form-control:-ms-input-placeholder {
+  color: #E2E2E2;
 }
 
 .form-group--select {
@@ -3031,6 +3061,13 @@ textarea.form-control {
 .ps-variant:hover .ps-variant__tooltip {
   visibility: visible;
   opacity: 1;
+}
+
+.cartStickyShowToolTip {
+  visibility: visible;
+  opacity: 1;
+  bottom: 60%;
+  left: 15%;
 }
 
 .ps-variant.active:before {
@@ -6498,7 +6535,7 @@ textarea.form-control {
 }
 
 .ps-product--detail .ps-product__shopping {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .ps-product--detail .ps-product__shopping > * {

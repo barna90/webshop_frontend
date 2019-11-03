@@ -13,8 +13,14 @@ class ShopCart extends Component {
       <CartProduct
         key={item.id}
         id={item.id}
+        media={item.media}
+        variationId={item.variationId}
         name={item.name}
         price={item.price}
+        quantity={item.quantity}
+        selectedColor={item.selectedColor}
+        selectedSize={item.selectedSize}
+        coverImageFileName={item.coverImageFileName}
       />
     ));
   };

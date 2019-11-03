@@ -252,26 +252,25 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
   if (action.type === ADD_TO_CART) {
-    let addedItem = productItems.find(item => item.id === action.id);
+    let addedItem = productItems.find(item => action.product.id === item.id);
     //check if the action id exists in the addedItems
     // ilyen lehet? elvileg igen, nem lesz kulon entitas minden meret es szin
-    let existed_item = state.addedItems.find(item => action.id === item.id);
+    let existed_item = state.addedItems.find(item => action.product.id === item.id && action.variationId === item.variationId);
     if (existed_item) {
-      addedItem.quantity += 1;
-      addedItem.selectedColor = action.selectedColor;
-      addedItem.selectedSize = action.selectedSize;
-      console.log("modify existed item in cart", addedItem);
+      addedItem.quantity += action.quantity;
       return {
         ...state,
         total: state.total + addedItem.price
       };
     } else {
-      addedItem.quantity = 1;
+      addedItem = action.product;
       addedItem.selectedColor = action.selectedColor;
       addedItem.selectedSize = action.selectedSize;
+      addedItem.quantity = action.quantity;
+      addedItem.variationId = action.variationId;
+      addedItem.coverImageFileName = action.product.media.find(image => image.tags.includes(action.selectedColor)).fileName;
       //calculating the total
       let newTotal = state.total + addedItem.price;
-      console.log("adding item to cart", addedItem);
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
@@ -280,8 +279,8 @@ const cartReducer = (state = initState, action) => {
     }
   }
   if (action.type === REMOVE_ITEM) {
-    let itemToRemove = state.addedItems.find(item => action.id === item.id);
-    let new_items = state.addedItems.filter(item => action.id !== item.id);
+    let itemToRemove = state.addedItems.find(item => action.id === item.id && action.variationId === item.variationId);
+    let new_items = state.addedItems.filter(item => action.id !== item.id || action.variationId === item.variationId);
 
     //calculating the total
     let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;

@@ -81,8 +81,6 @@ class ProductListItem extends Component {
                 </li>
               </ul> */}
               <p className="ps-product__size">
-                Kivalasztott szinbol elerheto meretek:
-                <br />
                 {this.getSizesBySelectedColor(this.state.selectedColor)}
               </p>
             </div>

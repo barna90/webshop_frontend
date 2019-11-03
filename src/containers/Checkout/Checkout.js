@@ -9,7 +9,16 @@ class Checkout extends Component {
     const { itemsInCart } = this.props;
 
     return itemsInCart.map(item => {
-      return <CheckoutProductRow name={item.name} price={item.price} />;
+      return (
+        <CheckoutProductRow 
+          name={item.name} 
+          price={item.price} 
+          selectedColor={item.selectedColor} 
+          selectedSize={item.selectedSize} 
+          quantity={item.quantity}
+          coverImageFileName={item.coverImageFileName}
+        />
+      );
     });
   };
 

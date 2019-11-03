@@ -7,19 +7,22 @@ import {
 } from "./actionTypes/cartActions";
 
 //add cart action
-export const addToCart = (id, selectedColor, selectedSize) => {
+export const addToCart = (product, variationId, selectedColor, selectedSize, quantity) => {
   return {
     type: ADD_TO_CART,
-    id,
+    product,
+    variationId,
     selectedColor,
-    selectedSize
+    selectedSize,
+    quantity
   };
 };
 //remove item action
-export const removeItem = id => {
+export const removeItem = (id, variationId) => {
   return {
     type: REMOVE_ITEM,
-    id
+    id,
+    variationId
   };
 };
 //subtract qt action

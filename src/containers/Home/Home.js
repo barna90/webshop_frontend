@@ -26,9 +26,9 @@ class Home extends Component {
   };
 
   renderProductItems = productItems => {
-    const { maxItems } = this.state;
+    //const { maxItems } = this.state;
 
-    return productItems.slice(0, maxItems).map(item => (
+    return productItems.map(item => (
       <ProductListItem
         key={item.id}
         id={item.id}
@@ -115,7 +115,7 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              {productItems && maxItems < productItems.length && (
+              {/* {productItems && maxItems < productItems.length && (
                 <div className="ps-shopping__footer">
                   <a
                     className="ps-btn ps-btn--outline ps-btn--black"
@@ -125,7 +125,7 @@ class Home extends Component {
                     Load more
                   </a>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
