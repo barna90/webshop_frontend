@@ -70,16 +70,16 @@ class ProductListItem extends Component {
               {/* <a className="ps-product__favorite" href="#">
                 <i className="fa fa-heart-o"></i>
               </a> */}
-              {/* <ul className="ps-product__actions">
+              <ul className="ps-product__actions">
                 <li>
-                  <a href={"/termek/" + id}>Quick Shop</a>
+                  <a href={"/termek/" + id}>Vasarlas</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#" onClick={e => handleOnAddToCartClick(e, id)}>
                     Add to cart
                   </a>
-                </li>
-              </ul> */}
+                </li> */}
+              </ul>
               <p className="ps-product__size">
                 {this.getSizesBySelectedColor(this.state.selectedColor)}
               </p>

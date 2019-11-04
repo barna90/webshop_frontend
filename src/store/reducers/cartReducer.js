@@ -255,20 +255,18 @@ const cartReducer = (state = initState, action) => {
     let addedItem = productItems.find(item => action.product.id === item.id);
     //check if the action id exists in the addedItems
     // ilyen lehet? elvileg igen, nem lesz kulon entitas minden meret es szin
-    let existed_item = state.addedItems.find(item => action.product.id === item.id && action.variationId === item.variationId);
-    if (existed_item) {
-      addedItem.quantity += action.quantity;
-      return {
-        ...state,
-        total: state.total + addedItem.price
-      };
-    } else {
+    let existed_item = state.addedItems.find(
+      item =>
+        action.product.id === item.id && action.variationId === item.variationId
+    );
+    if (!existed_item) {
       addedItem = action.product;
       addedItem.selectedColor = action.selectedColor;
       addedItem.selectedSize = action.selectedSize;
-      addedItem.quantity = action.quantity;
       addedItem.variationId = action.variationId;
-      addedItem.coverImageFileName = action.product.media.find(image => image.tags.includes(action.selectedColor)).fileName;
+      addedItem.coverImageFileName = action.product.media.find(image =>
+        image.tags.includes(action.selectedColor)
+      ).fileName;
       //calculating the total
       let newTotal = state.total + addedItem.price;
       return {
@@ -279,8 +277,12 @@ const cartReducer = (state = initState, action) => {
     }
   }
   if (action.type === REMOVE_ITEM) {
-    let itemToRemove = state.addedItems.find(item => action.id === item.id && action.variationId === item.variationId);
-    let new_items = state.addedItems.filter(item => action.id !== item.id || action.variationId === item.variationId);
+    let itemToRemove = state.addedItems.find(
+      item => action.id === item.id && action.variationId === item.variationId
+    );
+    let new_items = state.addedItems.filter(
+      item => action.id !== item.id || action.variationId !== item.variationId
+    );
 
     //calculating the total
     let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;

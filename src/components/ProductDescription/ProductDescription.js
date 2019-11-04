@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CirclePicker } from "react-color";
 import SizeGuide from "../SizeGuide/SizeGuide";
 import preDefinedColors from "../../style/colors";
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 const QuantityError = styled.div`
   font-size: 12px;
@@ -16,6 +16,7 @@ class ProductDescription extends Component {
     quantity: 1,
     showQuantityError: false,
     showSizeOrColorError: false,
+    showNoMoreQuantityError: false
   };
 
   // TODO commons
@@ -49,10 +50,10 @@ class ProductDescription extends Component {
       this.setState({
         showQuantityError: true
       });
-      setTimeout( () => {
-          this.setState({
-            showQuantityError: false
-          });
+      setTimeout(() => {
+        this.setState({
+          showQuantityError: false
+        });
       }, 5000);
     }
   };
@@ -65,24 +66,34 @@ class ProductDescription extends Component {
     }
   };
 
-  onAddTocartClick = (e) => {
+  onAddTocartClick = e => {
     e.preventDefault();
     const { handleOnAddToCartClick, selectedColor, selectedSize } = this.props;
     const { quantity } = this.state;
 
     if (selectedColor && selectedSize) {
-      handleOnAddToCartClick(quantity);
+      const success = handleOnAddToCartClick(quantity);
+      if (!success) {
+        this.setState({
+          showNoMoreQuantityError: true
+        });
+        setTimeout(() => {
+          this.setState({
+            showNoMoreQuantityError: false
+          });
+        }, 5000);
+      }
     } else {
       this.setState({
         showSizeOrColorError: true
       });
-      setTimeout( () => {
-          this.setState({
-            showSizeOrColorError: false
-          });
+      setTimeout(() => {
+        this.setState({
+          showSizeOrColorError: false
+        });
       }, 5000);
     }
-  }
+  };
 
   // TODO path to commons
   renderImagesForProductGallery = images => {
@@ -216,14 +227,34 @@ class ProductDescription extends Component {
                 </figure>
               </div>
               <div className="ps-product__shopping">
-                <div className={"form-group--number " + (variationsCount > 0 ? '' : 'disabled')}>
-                  <button className="up" onClick={variationsCount > 0 ? this.onIncrementQuantityClick : undefined}>
+                <div
+                  className={
+                    "form-group--number " +
+                    (variationsCount > 0 ? "" : "disabled")
+                  }
+                >
+                  <button
+                    className="up"
+                    onClick={
+                      variationsCount > 0
+                        ? this.onIncrementQuantityClick
+                        : undefined
+                    }
+                  >
                     <i className="fa fa-plus"></i>
                   </button>
-                  <button className="down" onClick={this.onDecrementQuantityClick}>
+                  <button
+                    className="down"
+                    onClick={this.onDecrementQuantityClick}
+                  >
                     <i className="fa fa-minus"></i>
                   </button>
-                  <input className="form-control" type="text" placeholder={this.state.quantity} readOnly/>
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder={this.state.quantity}
+                    readOnly
+                  />
                 </div>
                 <a
                   className="ps-btn"
@@ -237,13 +268,23 @@ class ProductDescription extends Component {
                 </a>
               </div>
               <QuantityError>
-                {
-                  (this.state.showSizeOrColorError && !(selectedSize && selectedColor)) ?
-                  <span>Kosárba rakás előtt válassza ki a kívánt színt és méretet!</span> :
-                  this.state.showQuantityError ? 
-                  <span>A kiválasztott színből és méretből maximum {variationsCount} db van készleten.</span> : 
+                {this.state.showSizeOrColorError &&
+                !(selectedSize && selectedColor) ? (
+                  <span>
+                    Kosárba rakás előtt válassza ki a kívánt színt és méretet!
+                  </span>
+                ) : this.state.showQuantityError ? (
+                  <span>
+                    A kiválasztott színből és méretből már csak{" "}
+                    {variationsCount} db van készleten.
+                  </span>
+                ) : this.state.showNoMoreQuantityError ? (
+                  <span>
+                    A kiválasztott színből és méretből nincs már készleten.
+                  </span>
+                ) : (
                   <span>&nbsp;</span>
-                }
+                )}
               </QuantityError>
               <div className="ps-product__links">
                 <a className="ps-modal-link" href="#">

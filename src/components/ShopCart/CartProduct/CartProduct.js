@@ -11,14 +11,22 @@ class CartProduct extends Component {
   };
 
   render() {
-    const { name, price, quantity, selectedColor, selectedSize, coverImageFileName } = this.props;
+    const {
+      name,
+      price,
+      quantity,
+      selectedColor,
+      selectedSize,
+      coverImageFileName
+    } = this.props;
 
     return (
       <div className="ps-product--cart">
         <div className="ps-product__thumbnail">
           <a href="product-standard.html">
             <img
-              src={require("../../../assets/images/productimages/" + coverImageFileName)}
+              src={require("../../../assets/images/productimages/" +
+                coverImageFileName)}
               alt=""
             />
           </a>
@@ -28,8 +36,12 @@ class CartProduct extends Component {
           ></span>
         </div>
         <div className="ps-product__content">
-          <a href="#">{name} - {selectedColor}, {selectedSize}</a>
-          <span>{quantity}x {price} Ft</span>
+          <a href="#">
+            {name} - {selectedColor}, {selectedSize}
+          </a>
+          <span>
+            {quantity}x {price} Ft
+          </span>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { uniq } from 'lodash';
+import { uniq } from "lodash";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import ProductDescription from "../../components/ProductDescription/ProductDescription";
 import CartSticky from "../../components/CartSticky/CartSticky";
@@ -32,7 +32,19 @@ class ProductDetails extends Component {
         product.variations,
         product.parameters
       );
-      this.props.addToCart(product, variationId, selectedColorName, selectedSize, quantity);
+      if (variationId !== null) {
+        this.props.addToCart(
+          product,
+          variationId,
+          selectedColorName,
+          selectedSize,
+          quantity
+        );
+
+        return true;
+      } else {
+        return false;
+      }
     } else {
       // TODO normalis hibauzenet
       alert("Kerem valasszon meretet es szint!");
@@ -64,8 +76,8 @@ class ProductDetails extends Component {
   };
 
   findParamIndexInParameters = (parameters, parameterName) => {
-    const index = parameters &&
-      parameters.findIndex(param => param.name === parameterName);
+    const index =
+      parameters && parameters.findIndex(param => param.name === parameterName);
 
     if (index >= 0) {
       return index === 0 ? "" : index + 1;
@@ -74,15 +86,23 @@ class ProductDetails extends Component {
     }
   };
 
-  getDistinctParamValueFromVariations = (variations, parameters, parameterName) => {
-    const paramIndex = this.findParamIndexInParameters(parameters, parameterName);
+  getDistinctParamValueFromVariations = (
+    variations,
+    parameters,
+    parameterName
+  ) => {
+    const paramIndex = this.findParamIndexInParameters(
+      parameters,
+      parameterName
+    );
     if (paramIndex !== null) {
-      return uniq(variations.filter(variation => 
-        variation["parameter" + paramIndex])
-                        .map(variation => 
-        variation["parameter" + paramIndex]))
+      return uniq(
+        variations
+          .filter(variation => variation["parameter" + paramIndex])
+          .map(variation => variation["parameter" + paramIndex])
+      );
     } else {
-      return []
+      return [];
     }
   };
 
@@ -96,19 +116,24 @@ class ProductDetails extends Component {
     const colorParamIndex = this.findParamIndexInParameters(parameters, "Szín");
     const sizeParamIndex = this.findParamIndexInParameters(parameters, "Méret");
     if (colorParamIndex !== null && sizeParamIndex !== null) {
-      return uniq(variations.filter(variation => 
-        variation["parameter" + colorParamIndex] && 
-        variation["parameter" + sizeParamIndex] && 
-        variation["parameter" + colorParamIndex] === selectedColorName)
-          .map(variation => 
-        variation["parameter" + sizeParamIndex]));
+      return uniq(
+        variations
+          .filter(
+            variation =>
+              variation["parameter" + colorParamIndex] &&
+              variation["parameter" + sizeParamIndex] &&
+              variation["parameter" + colorParamIndex] === selectedColorName
+          )
+          .map(variation => variation["parameter" + sizeParamIndex])
+      );
     } else {
-      return []
+      return [];
     }
   };
 
   getVariationsCountBySelectedColorAndSize = (variations, parameters) => {
     const { selectedColor, selectedSize } = this.state;
+    const { product } = this.props;
     const selectedColorName = this.getKeyByValue(
       preDefinedColors,
       selectedColor
@@ -117,19 +142,31 @@ class ProductDetails extends Component {
     const colorParamIndex = this.findParamIndexInParameters(parameters, "Szín");
     const sizeParamIndex = this.findParamIndexInParameters(parameters, "Méret");
     if (colorParamIndex != null && sizeParamIndex != null && selectedSize) {
-      return variations.filter(variation => 
-        variation["parameter" + colorParamIndex] && 
-        variation["parameter" + sizeParamIndex] && 
-        variation["parameter" + colorParamIndex] === selectedColorName &&
-        variation["parameter" + sizeParamIndex] === selectedSize
-        ).length;
+      return variations.filter(
+        variation =>
+          variation["parameter" + colorParamIndex] &&
+          variation["parameter" + sizeParamIndex] &&
+          variation["parameter" + colorParamIndex] === selectedColorName &&
+          variation["parameter" + sizeParamIndex] === selectedSize &&
+          !this.cartContainsProduct(product.id, variation.id)
+      ).length;
     } else {
       return 0;
     }
-  }
+  };
+
+  cartContainsProduct = (productId, variationId) => {
+    const { itemsInCart } = this.props;
+    return (
+      itemsInCart.filter(
+        item => item.id === productId && item.variationId === variationId
+      ).length > 0
+    );
+  };
 
   getSelectedVariationId = (variations, parameters) => {
     const { selectedColor, selectedSize } = this.state;
+    const { product } = this.props;
     const selectedColorName = this.getKeyByValue(
       preDefinedColors,
       selectedColor
@@ -138,26 +175,34 @@ class ProductDetails extends Component {
     const colorParamIndex = this.findParamIndexInParameters(parameters, "Szín");
     const sizeParamIndex = this.findParamIndexInParameters(parameters, "Méret");
     if (colorParamIndex != null && sizeParamIndex != null && selectedSize) {
-      return variations.find(variation => 
-        variation["parameter" + colorParamIndex] && 
-        variation["parameter" + sizeParamIndex] && 
-        variation["parameter" + colorParamIndex] === selectedColorName &&
-        variation["parameter" + sizeParamIndex] === selectedSize
-        ).id;
+      const selectedVariation = variations.find(
+        variation =>
+          variation["parameter" + colorParamIndex] &&
+          variation["parameter" + sizeParamIndex] &&
+          variation["parameter" + colorParamIndex] === selectedColorName &&
+          variation["parameter" + sizeParamIndex] === selectedSize &&
+          !this.cartContainsProduct(product.id, variation.id)
+      );
+      return selectedVariation ? selectedVariation.id : null;
     } else {
       return null;
     }
-  }
+  };
 
   selectFirstColorIfNull = () => {
     const { product } = this.props;
 
-    const colors = product &&
+    const colors =
+      product &&
       product.variations &&
       product.parameters &&
-      this.getDistinctParamValueFromVariations(product.variations, product.parameters, "Szín");
+      this.getDistinctParamValueFromVariations(
+        product.variations,
+        product.parameters,
+        "Szín"
+      );
 
-      return colors && colors.length > 0 ? preDefinedColors[colors[0]] : null;
+    return colors && colors.length > 0 ? preDefinedColors[colors[0]] : null;
   };
 
   getKeyByValue = (object, value) =>
@@ -177,17 +222,17 @@ class ProductDetails extends Component {
             name={product.name}
             price={product.price}
             images={product.media}
-            colors={
-              this.getDistinctParamValueFromVariations(
-                product.variations, 
-                product.parameters, 
-                "Szín"
+            colors={this.getDistinctParamValueFromVariations(
+              product.variations,
+              product.parameters,
+              "Szín"
             )}
-            sizes={
-              this.sortColors(this.getDistinctSizesFromVariationsBySelectedColor(
+            sizes={this.sortColors(
+              this.getDistinctSizesFromVariationsBySelectedColor(
                 product.variations,
                 product.parameters
-            ))}
+              )
+            )}
             variationsCount={this.getVariationsCountBySelectedColorAndSize(
               product.variations,
               product.parameters
@@ -225,16 +270,19 @@ class ProductDetails extends Component {
 
 const mapStateToProps = state => {
   return {
-    product: state.product.product
+    product: state.product.product,
+    itemsInCart: state.cart.addedItems
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addToCart: (id, brandId, selectedColorName, selectedSize, quantity) => {
-      dispatch(addToCart(id, brandId, selectedColorName, selectedSize, quantity));
+      dispatch(
+        addToCart(id, brandId, selectedColorName, selectedSize, quantity)
+      );
     },
-    getProduct: (id) => {
+    getProduct: id => {
       dispatch(getProduct(id));
     }
   };

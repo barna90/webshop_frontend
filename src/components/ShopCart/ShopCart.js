@@ -7,9 +7,7 @@ class ShopCart extends Component {
   state = {};
 
   renderProductsInCart = () => {
-    const { itemsInCart } = this.props;
-    console.log(itemsInCart);
-    return itemsInCart.map(item => (
+    return this.groupProductsInCart().map(item => (
       <CartProduct
         key={item.id}
         id={item.id}
@@ -28,6 +26,34 @@ class ShopCart extends Component {
   sumProductsInCart = () => {
     const { itemsInCart } = this.props;
     return sumBy(itemsInCart, "price");
+  };
+
+  groupProductsInCart = () => {
+    const groupedProducts = [];
+    const { itemsInCart } = this.props;
+
+    itemsInCart.map(item => {
+      const isInArray =
+        groupedProducts.filter(
+          p =>
+            p.selectedColor === item.selectedColor &&
+            p.selectedSize === item.selectedSize
+        ).length > 0;
+
+      if (isInArray) {
+        const itemInArray = groupedProducts.find(
+          p =>
+            p.selectedColor === item.selectedColor &&
+            p.selectedSize === item.selectedSize
+        );
+
+        itemInArray.quantity += 1;
+      } else {
+        groupedProducts.push({ ...item, quantity: 1 });
+      }
+    });
+
+    return groupedProducts;
   };
 
   render() {
