@@ -14,7 +14,14 @@ class CheckoutProductRow extends Component {
   state = {};
 
   render() {
-    const { name, price, selectedColor, selectedSize, quantity, coverImageFileName } = this.props;
+    const {
+      name,
+      price,
+      selectedColor,
+      selectedSize,
+      quantity,
+      coverImageFileName
+    } = this.props;
 
     return (
       <tr>
@@ -22,14 +29,18 @@ class CheckoutProductRow extends Component {
           <ProductRow>
             <a href="#">
               <img
-                src={require("../../../assets/images/productimages/" + coverImageFileName)}
+                src={require("../../../assets/images/productimages/" +
+                  coverImageFileName)}
                 alt=""
               />
             </a>
-            <ProducName>{name} - {selectedColor}, {selectedSize} × {quantity}</ProducName>
+            <ProducName>
+              {name} - {selectedColor}, {selectedSize} × {quantity}
+            </ProducName>
           </ProductRow>
         </td>
-        <td>{price} Ft</td>
+        {/* TODO style ezresek */}
+        <td>{price * quantity} Ft</td>
       </tr>
     );
   }

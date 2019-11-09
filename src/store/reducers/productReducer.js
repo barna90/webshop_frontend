@@ -29,7 +29,7 @@ const productItems = [
         tags: ["Sárga"]
       },
       {
-        id: 15,
+        id: 16,
         fileId: "IMG_20190915_131525",
         fileName: "IMG_20190915_131525.jpg",
         extension: "jpg",
@@ -46,7 +46,7 @@ const productItems = [
         tags: ["Sárga"]
       },
       {
-        id: 15,
+        id: 17,
         fileId: "IMG_20190915_131540",
         fileName: "IMG_20190915_131540.jpg",
         extension: "jpg",
@@ -63,7 +63,7 @@ const productItems = [
         tags: ["Sárga"]
       },
       {
-        id: 15,
+        id: 18,
         fileId: "IMG_20190915_131856",
         fileName: "IMG_20190915_131856.jpg",
         extension: "jpg",
@@ -80,7 +80,7 @@ const productItems = [
         tags: ["Rózsaszín"]
       },
       {
-        id: 15,
+        id: 19,
         fileId: "IMG_20190915_131903",
         fileName: "IMG_20190915_131903.jpg",
         extension: "jpg",
@@ -97,7 +97,7 @@ const productItems = [
         tags: ["Rózsaszín"]
       },
       {
-        id: 15,
+        id: 20,
         fileId: "IMG_20190915_131908",
         fileName: "IMG_20190915_131908.jpg",
         extension: "jpg",
@@ -116,103 +116,103 @@ const productItems = [
     ],
     variations: [
       {
-        "id": 1,
-        "parameter": "Sárga",
-        "parameter2": "S",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 1,
+        parameter: "Sárga",
+        parameter2: "S",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 17,
-        "parameter": "Sárga",
-        "parameter2": "S",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 17,
+        parameter: "Sárga",
+        parameter2: "S",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 2,
-        "parameter": "Sárga",
-        "parameter2": "M",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 2,
+        parameter: "Sárga",
+        parameter2: "M",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 6,
-        "parameter": "Rózsaszín",
-        "parameter2": "L",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 6,
+        parameter: "Rózsaszín",
+        parameter2: "L",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 7,
-        "parameter": "Rózsaszín",
-        "parameter2": "XXL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 7,
+        parameter: "Rózsaszín",
+        parameter2: "XXL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 8,
-        "parameter": "Rózsaszín",
-        "parameter2": "XL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 8,
+        parameter: "Rózsaszín",
+        parameter2: "XL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 13,
-        "parameter": "Sárga",
-        "parameter2": "L",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 13,
+        parameter: "Sárga",
+        parameter2: "L",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 14,
-        "parameter": "Sárga",
-        "parameter2": "XL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 14,
+        parameter: "Sárga",
+        parameter2: "XL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 16,
-        "parameter": "Rózsaszín",
-        "parameter2": "S",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 16,
+        parameter: "Rózsaszín",
+        parameter2: "S",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       }
     ],
     description: null,
@@ -220,20 +220,20 @@ const productItems = [
     categoryId: 2,
     parameters: [
       {
-        "id": 3,
-        "name": "Szín",
-        "priority": 200,
-        "values": null,
-        "webshopId": null
+        id: 3,
+        name: "Szín",
+        priority: 200,
+        values: null,
+        webshopId: null
       },
       {
-        "id": 4,
-        "name": "Méret",
-        "priority": 100,
-        "values": null,
-        "webshopId": null
+        id: 4,
+        name: "Méret",
+        priority: 100,
+        values: null,
+        webshopId: null
       }
-    ],
+    ]
   },
   {
     id: 2,
@@ -282,114 +282,114 @@ const productItems = [
     ],
     variations: [
       {
-        "id": 1,
-        "parameter": "Sárga",
-        "parameter2": "S",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 1,
+        parameter: "Sárga",
+        parameter2: "S",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 2,
-        "parameter": "Sárga",
-        "parameter2": "M",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 2,
+        parameter: "Sárga",
+        parameter2: "M",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 5,
-        "parameter": "Sárga",
-        "parameter2": "M",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 5,
+        parameter: "Sárga",
+        parameter2: "M",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 6,
-        "parameter": "Sárga",
-        "parameter2": "L",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 6,
+        parameter: "Sárga",
+        parameter2: "L",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 7,
-        "parameter": "Sárga",
-        "parameter2": "XXL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 7,
+        parameter: "Sárga",
+        parameter2: "XXL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 8,
-        "parameter": "Rózsaszín",
-        "parameter2": "XL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 8,
+        parameter: "Rózsaszín",
+        parameter2: "XL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 13,
-        "parameter": "Rózsaszín",
-        "parameter2": "L",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 13,
+        parameter: "Rózsaszín",
+        parameter2: "L",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 14,
-        "parameter": "Rózsaszín",
-        "parameter2": "XL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 14,
+        parameter: "Rózsaszín",
+        parameter2: "XL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 15,
-        "parameter": "Rózsaszín",
-        "parameter2": "XXL",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 15,
+        parameter: "Rózsaszín",
+        parameter2: "XXL",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       },
       {
-        "id": 16,
-        "parameter": "Rózsaszín",
-        "parameter2": "S",
-        "updatedParameter": null,
-        "updatedParameter2": null,
-        "faulty": false,
-        "enabled": true,
-        "stock": "IN",
-        "productId": 3
+        id: 16,
+        parameter: "Rózsaszín",
+        parameter2: "S",
+        updatedParameter: null,
+        updatedParameter2: null,
+        faulty: false,
+        enabled: true,
+        stock: "IN",
+        productId: 3
       }
     ],
     description: null,
@@ -397,20 +397,20 @@ const productItems = [
     categoryId: 2,
     parameters: [
       {
-        "id": 3,
-        "name": "Szín",
-        "priority": 200,
-        "values": null,
-        "webshopId": null
+        id: 3,
+        name: "Szín",
+        priority: 200,
+        values: null,
+        webshopId: null
       },
       {
-        "id": 4,
-        "name": "Méret",
-        "priority": 100,
-        "values": null,
-        "webshopId": null
+        id: 4,
+        name: "Méret",
+        priority: 100,
+        values: null,
+        webshopId: null
       }
-    ],
+    ]
   },
   {
     id: 3,

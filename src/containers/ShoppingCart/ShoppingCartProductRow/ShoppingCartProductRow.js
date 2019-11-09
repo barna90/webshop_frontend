@@ -12,24 +12,34 @@ class ShoppingCartProductRow extends Component {
   };
 
   render() {
-    const { name, price, selectedColor, selectedSize, coverImageFileName } = this.props;
+    const {
+      name,
+      price,
+      selectedColor,
+      selectedSize,
+      quantity,
+      coverImageFileName
+    } = this.props;
 
     return (
       <tr>
         <td>
           <a href="product-standard.html">
             <img
-              src={require("../../../assets/images/productimages/" + coverImageFileName)}
+              src={require("../../../assets/images/productimages/" +
+                coverImageFileName)}
               alt=""
             />
           </a>
         </td>
         <td>
-          <a href="product-standard.html">{name} - {selectedColor}, {selectedSize}</a>
+          <a href="product-standard.html">
+            {name} - {selectedColor}, {selectedSize}
+          </a>
         </td>
         <td>{price} Ft</td>
         <td>
-          <div className="form-group--number">
+          {/* <div className="form-group--number">
             <button className="up">
               <i className="fa fa-plus"></i>
             </button>
@@ -42,7 +52,8 @@ class ShoppingCartProductRow extends Component {
               placeholder="1"
               value="1"
             />
-          </div>
+          </div> */}
+          {quantity}
         </td>
         <td>
           <p>$45.00</p>

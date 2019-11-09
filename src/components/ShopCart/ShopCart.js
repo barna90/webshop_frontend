@@ -9,7 +9,7 @@ class ShopCart extends Component {
   renderProductsInCart = () => {
     return this.groupProductsInCart().map(item => (
       <CartProduct
-        key={item.id}
+        key={item.id.toString() + item.variationId.toString()}
         id={item.id}
         media={item.media}
         variationId={item.variationId}

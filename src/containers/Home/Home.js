@@ -1,16 +1,64 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import { addToCart } from "../../store/actions/cartActions";
 import { getProductList } from "../../store/actions/productListActions";
 
 class Home extends Component {
   state = {
-    maxItems: 4
+    isLoading: true
   };
 
   componentWillMount() {
     this.props.getProductList();
+    this.getProductList();
+  }
+
+  // fetchUsers = () => {
+  //   fetch(`https://jsonplaceholder.typicode.com/users`)
+  //     .then(response => response.json())
+  //     .then(data =>
+  //       this.setState({
+  //         users: data,
+  //         isLoading: false
+  //       })
+  //     )
+
+  //     .catch(error => this.setState({ error, isLoading: false }));
+  // };
+
+  getProduct() {
+    axios
+      .get("http://localhost:8080/api/products/9")
+      .then(response => response.data)
+      .then(product => {
+        this.setState({
+          product,
+          isLoading: false
+        });
+      })
+      .catch(error => this.setState({ error, isLoading: false }));
+  }
+
+  getProductList() {
+    const instance = axios.create({
+      baseUrl: "http;//localhost:8080",
+      headers: { "x-webshopId": 1 }
+    });
+
+    const body = { page: 0, pageSize: 10 };
+
+    instance
+      .post("http://localhost:8080/api/products/search", body)
+      .then(response => response.data)
+      .then(productList => {
+        this.setState({
+          productList,
+          isLoading: false
+        });
+      })
+      .catch(error => this.setState({ error, isLoading: false }));
   }
 
   // handleOnAddToCartClick = (e, id) => {
@@ -54,7 +102,11 @@ class Home extends Component {
 
   render() {
     const { productItems } = this.props;
-    const { maxItems } = this.state;
+    const { productList, isLoading } = this.state;
+
+    if (!isLoading) {
+      console.log("product", productList);
+    }
 
     return (
       <>

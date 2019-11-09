@@ -99,7 +99,7 @@ class ProductDescription extends Component {
   renderImagesForProductGallery = images => {
     return images.map(image => {
       return (
-        <div className="item">
+        <div className="item" key={image.id}>
           <a
             href={require("../../assets/images/productimages/" +
               image.fileName)}
@@ -118,7 +118,7 @@ class ProductDescription extends Component {
   renderImagesForProductVariants = images => {
     return images.map(image => {
       return (
-        <div className="item">
+        <div className="item" key={image.id}>
           <img
             src={require("../../assets/images/productimages/" + image.fileName)}
             alt=""
@@ -139,9 +139,10 @@ class ProductDescription extends Component {
 
   renderSizes = () => {
     const { sizes, selectedSize, selectSize } = this.props;
-    return sizes.map(size => {
+    return sizes.map((size, idx) => {
       return (
         <div
+          key={idx}
           className={
             "ps-variant ps-variant--size " +
             (selectedSize === size ? "active" : "")
@@ -280,7 +281,7 @@ class ProductDescription extends Component {
                   </span>
                 ) : this.state.showNoMoreQuantityError ? (
                   <span>
-                    A kiválasztott színből és méretből nincs már készleten.
+                    A kiválasztott színből és méretből nincs már tobb készleten.
                   </span>
                 ) : (
                   <span>&nbsp;</span>

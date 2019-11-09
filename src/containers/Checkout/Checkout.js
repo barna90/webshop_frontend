@@ -1,28 +1,80 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { sumBy } from "lodash";
 import CheckoutProductRow from "./CheckoutProductRow/CheckoutProductRow";
 
 class Checkout extends Component {
-  state = {};
+  state = {
+    firstName: "",
+    lastName: "",
+    city: "",
+    address: "",
+    phone: "",
+    email: ""
+  };
 
   renderProductRow = () => {
+    return this.groupProductsInCart().map(item => (
+      <CheckoutProductRow
+        key={item.id.toString() + item.variationId.toString()}
+        name={item.name}
+        price={item.price}
+        selectedColor={item.selectedColor}
+        selectedSize={item.selectedSize}
+        quantity={item.quantity}
+        coverImageFileName={item.coverImageFileName}
+      />
+    ));
+  };
+
+  groupProductsInCart = () => {
+    const groupedProducts = [];
     const { itemsInCart } = this.props;
 
-    return itemsInCart.map(item => {
-      return (
-        <CheckoutProductRow 
-          name={item.name} 
-          price={item.price} 
-          selectedColor={item.selectedColor} 
-          selectedSize={item.selectedSize} 
-          quantity={item.quantity}
-          coverImageFileName={item.coverImageFileName}
-        />
-      );
+    itemsInCart.map(item => {
+      const isInArray =
+        groupedProducts.filter(
+          p =>
+            p.selectedColor === item.selectedColor &&
+            p.selectedSize === item.selectedSize
+        ).length > 0;
+
+      if (isInArray) {
+        const itemInArray = groupedProducts.find(
+          p =>
+            p.selectedColor === item.selectedColor &&
+            p.selectedSize === item.selectedSize
+        );
+
+        itemInArray.quantity += 1;
+      } else {
+        groupedProducts.push({ ...item, quantity: 1 });
+      }
+    });
+
+    return groupedProducts;
+  };
+
+  calculateSubtotal = () => {
+    const { itemsInCart } = this.props;
+    return sumBy(itemsInCart, "price");
+  };
+
+  onInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
     });
   };
 
+  onPlaceOrderClick = () => {
+    console.log(this.state);
+  };
+
   render() {
+    const { firstName, lastName, city, address, phone, email } = this.state;
+
     return (
       <>
         <div
@@ -55,6 +107,9 @@ class Checkout extends Component {
                               className="form-control"
                               type="text"
                               placeholder=""
+                              name="firstName"
+                              value={firstName}
+                              onChange={this.onInputChange}
                             />
                           </div>
                         </div>
@@ -67,6 +122,9 @@ class Checkout extends Component {
                               className="form-control"
                               type="text"
                               placeholder=""
+                              name="lastName"
+                              value={lastName}
+                              onChange={this.onInputChange}
                             />
                           </div>
                         </div>
@@ -94,6 +152,9 @@ class Checkout extends Component {
                           className="form-control"
                           type="text"
                           placeholder=""
+                          name="address"
+                          value={address}
+                          onChange={this.onInputChange}
                         />
                       </div>
                       <div className="form-group">
@@ -104,6 +165,9 @@ class Checkout extends Component {
                           className="form-control"
                           type="text"
                           placeholder=""
+                          name="city"
+                          value={city}
+                          onChange={this.onInputChange}
                         />
                       </div>
                       <div className="form-group">
@@ -114,6 +178,9 @@ class Checkout extends Component {
                           className="form-control"
                           type="text"
                           placeholder=""
+                          name="phone"
+                          value={phone}
+                          onChange={this.onInputChange}
                         />
                       </div>
                       <div className="form-group">
@@ -124,6 +191,9 @@ class Checkout extends Component {
                           className="form-control"
                           type="email"
                           placeholder=""
+                          name="email"
+                          value={email}
+                          onChange={this.onInputChange}
                         />
                       </div>
                       <div className="form-group">
@@ -165,7 +235,7 @@ class Checkout extends Component {
                             <td>
                               <strong>Subtotal</strong>
                             </td>
-                            <td>$45.00</td>
+                            <td>{this.calculateSubtotal()} Ft</td>
                           </tr>
                           <tr>
                             <td>
@@ -218,7 +288,10 @@ class Checkout extends Component {
                           />
                         </label>
                       </div>
-                      <button className="ps-btn ps-btn--outline ps-btn--black">
+                      <button
+                        className="ps-btn ps-btn--outline ps-btn--black"
+                        onClick={this.onPlaceOrderClick}
+                      >
                         Place order
                       </button>
                     </div>
