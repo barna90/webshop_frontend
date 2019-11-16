@@ -99,14 +99,10 @@ class ProductDescription extends Component {
   renderImagesForProductGallery = images => {
     return images.map(image => {
       return (
-        <div className="item" key={image.id}>
-          <a
-            href={require("../../assets/images/productimages/" +
-              image.fileName)}
-          >
+        <div className="item" key={image}>
+          <a href={require("../../assets/images/productimages/" + image)}>
             <img
-              src={require("../../assets/images/productimages/" +
-                image.fileName)}
+              src={require("../../assets/images/productimages/" + image)}
               alt=""
             />
           </a>
@@ -118,9 +114,9 @@ class ProductDescription extends Component {
   renderImagesForProductVariants = images => {
     return images.map(image => {
       return (
-        <div className="item" key={image.id}>
+        <div className="item" key={image}>
           <img
-            src={require("../../assets/images/productimages/" + image.fileName)}
+            src={require("../../assets/images/productimages/" + image)}
             alt=""
           />
         </div>
@@ -129,12 +125,16 @@ class ProductDescription extends Component {
   };
 
   filterImagesBySelectedColor = selectedColor => {
-    const { images } = this.props;
+    const { mediaPreview } = this.props;
     const selectedColorName = this.getKeyByValue(
       preDefinedColors,
       selectedColor
     );
-    return images.filter(img => img.tags.indexOf(selectedColorName) > -1);
+    const selectedMedia = mediaPreview[selectedColorName];
+    // TODO arrayt vissza
+    return selectedMedia
+      ? [selectedMedia.fileId + "." + selectedMedia.extension]
+      : ["default.jpg"];
   };
 
   renderSizes = () => {

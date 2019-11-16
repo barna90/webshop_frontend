@@ -4,29 +4,17 @@ import axios from "axios";
 import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import { addToCart } from "../../store/actions/cartActions";
 import { getProductList } from "../../store/actions/productListActions";
+import { isArray } from "lodash";
 
 class Home extends Component {
   state = {
     isLoading: true
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getProductList();
     this.getProductList();
   }
-
-  // fetchUsers = () => {
-  //   fetch(`https://jsonplaceholder.typicode.com/users`)
-  //     .then(response => response.json())
-  //     .then(data =>
-  //       this.setState({
-  //         users: data,
-  //         isLoading: false
-  //       })
-  //     )
-
-  //     .catch(error => this.setState({ error, isLoading: false }));
-  // };
 
   getProduct() {
     axios
@@ -54,7 +42,7 @@ class Home extends Component {
       .then(response => response.data)
       .then(productList => {
         this.setState({
-          productList,
+          productListItems: productList.items,
           isLoading: false
         });
       })
@@ -75,37 +63,40 @@ class Home extends Component {
 
   renderProductItems = productItems => {
     //const { maxItems } = this.state;
-
-    return productItems.map(item => (
-      <ProductListItem
-        key={item.id}
-        id={item.id}
-        title={item.name}
-        oldPrice={item.oldPrice}
-        price={item.price}
-        image={item.image}
-        imageUrl={item.imageUrl}
-        imageUrlAlt={item.imageUrlAlt}
-        sizes={item.sizes}
-        colors={item.colors}
-        discountPercent={
-          item.oldPrice
-            ? Math.round(
-                ((item.price - item.oldPrice) / item.oldPrice) * -100 * 10
-              ) / 10
-            : null
-        }
-        // handleOnAddToCartClick={this.handleOnAddToCartClick}
-      />
-    ));
+    if (isArray(productItems)) {
+      return productItems.map(item => (
+        <ProductListItem
+          key={item.id}
+          id={item.id}
+          title={item.name}
+          oldPrice={item.oldPrice}
+          price={item.price}
+          imageUrl={item.imageUrl}
+          imageUrlAlt={item.imageUrlAlt}
+          sizes={JSON.parse(item.availableStockInfo)}
+          mediaPreview={JSON.parse(item.mediaPreview)}
+          availableStockInfo={JSON.parse(item.availableStockInfo)}
+          discountPercent={
+            item.oldPrice
+              ? Math.round(
+                  ((item.price - item.oldPrice) / item.oldPrice) * -100 * 10
+                ) / 10
+              : null
+          }
+          // handleOnAddToCartClick={this.handleOnAddToCartClick}
+        />
+      ));
+    }
   };
 
   render() {
     const { productItems } = this.props;
-    const { productList, isLoading } = this.state;
+    const { productList, isLoading, productListItems } = this.state;
 
     if (!isLoading) {
-      console.log("product", productList);
+      console.log("product", productListItems);
+    } else {
+      return "Loading items...";
     }
 
     return (
@@ -163,7 +154,8 @@ class Home extends Component {
                 >
                   <div className="ps-masonry">
                     <div className="grid-sizer"></div>
-                    {this.renderProductItems(productItems)}
+                    {!isLoading && this.renderProductItems(productListItems)}
+                    {isLoading && "Loading items..."}
                   </div>
                 </div>
               </div>
@@ -203,7 +195,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

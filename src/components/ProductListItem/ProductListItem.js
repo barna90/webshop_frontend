@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { CirclePicker } from "react-color";
 import preDefinedColors from "../../style/colors";
+import { has, isArray } from "lodash";
 
 class ProductListItem extends Component {
   state = {
-    selectedColor:
-      this.props.colors && this.props.colors.length > 0
-        ? preDefinedColors[this.props.colors[0]]
-        : null
+    selectedColor: this.props.availableStockInfo
+      ? preDefinedColors[Object.keys(this.props.availableStockInfo)[0]]
+      : null
   };
 
   getKeyByValue = (object, value) =>
@@ -15,26 +15,62 @@ class ProductListItem extends Component {
       key => object[key].toUpperCase() === value.toUpperCase()
     );
 
-  hexFromColorNames = colors => colors.map(color => preDefinedColors[color]);
+  getColors = availableStockInfo => {
+    return Object.keys(availableStockInfo);
+  };
+
+  hexFromColorNames = colors => {
+    if (isArray(colors)) {
+      return colors.map(color => {
+        if (has(preDefinedColors, color)) {
+          return preDefinedColors[color];
+        } else {
+          return "#FFFFFF";
+        }
+      });
+    } else {
+      return "#FFFFFF";
+    }
+  };
 
   sizesFormatter = sizes => sizes.join(", ");
 
   // TODO config image folder
-  imageFormatter = image => (
-    <img src={require("../../assets/images/productimages/" + image)} alt="" />
-  );
+  imageFormatter = imageFileName => {
+    return (
+      <img
+        src={require("../../assets/images/productimages/" + imageFileName)}
+        alt=""
+      />
+    );
+  };
 
   findImageFileNameBySelectedColor = selectedColor => {
-    const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
-    const selectedImage = this.props.image.find(
-      img => img.tags.indexOf(colorName) > -1
-    );
-    return selectedImage ? this.imageFormatter(selectedImage.fileName) : null;
+    if (selectedColor) {
+      const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
+      // const selectedImage = this.props.image.find(
+      //   img => img.tags.indexOf(colorName) > -1
+      // );
+      if (colorName && has(this.props.mediaPreview, colorName)) {
+        const imageFileName =
+          this.props.mediaPreview[colorName].fileId +
+          "." +
+          this.props.mediaPreview[colorName].extension;
+        return this.imageFormatter(imageFileName);
+      } else {
+        return this.imageFormatter("default.jpg");
+      }
+    } else {
+      console.log("defaultimage");
+      return this.imageFormatter("default.jpg");
+    }
   };
 
   getSizesBySelectedColor = selectedColor => {
-    const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
-    return this.sizesFormatter(this.props.sizes[colorName]);
+    if (selectedColor) {
+      const colorName = this.getKeyByValue(preDefinedColors, selectedColor);
+      return this.sizesFormatter(this.props.sizes[colorName]);
+    }
   };
 
   handleColorChangeComplete = (color, event) => {
@@ -44,7 +80,14 @@ class ProductListItem extends Component {
   };
 
   render() {
-    const { id, title, oldPrice, price, colors, discountPercent } = this.props;
+    const {
+      id,
+      title,
+      oldPrice,
+      price,
+      discountPercent,
+      availableStockInfo
+    } = this.props;
 
     return (
       <div className="grid-item">
@@ -101,8 +144,14 @@ class ProductListItem extends Component {
               {!oldPrice && <p className="ps-product__price">{price} Ft</p>}
               <div className="ps-product__color">
                 <CirclePicker
-                  color={this.state.selectedColor}
-                  colors={this.hexFromColorNames(colors)}
+                  color={
+                    this.state.selectedColor
+                      ? this.state.selectedColor
+                      : "#FFFFFF"
+                  }
+                  colors={this.hexFromColorNames(
+                    this.getColors(availableStockInfo)
+                  )}
                   circleSize={17}
                   circleSpacing={4}
                   onChangeComplete={this.handleColorChangeComplete}

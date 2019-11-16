@@ -264,9 +264,15 @@ const cartReducer = (state = initState, action) => {
       addedItem.selectedColor = action.selectedColor;
       addedItem.selectedSize = action.selectedSize;
       addedItem.variationId = action.variationId;
-      addedItem.coverImageFileName = action.product.media.find(image =>
-        image.tags.includes(action.selectedColor)
-      ).fileName;
+      const mediaPreview = JSON.parse(action.product.mediaPreview);
+      addedItem.coverImageFileName =
+        mediaPreview &&
+        addedItem.selectedColor &&
+        mediaPreview[addedItem.selectedColor]
+          ? mediaPreview[addedItem.selectedColor].fileId +
+            "." +
+            mediaPreview[addedItem.selectedColor].extension
+          : "default.jpg";
       //calculating the total
       let newTotal = state.total + addedItem.price;
       return {
